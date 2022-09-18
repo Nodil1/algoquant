@@ -15,7 +15,8 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation("org.json:json:20220320")
-
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
     implementation("org.ta4j:ta4j-core:0.15")
 
 }

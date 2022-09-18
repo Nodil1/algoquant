@@ -42,7 +42,7 @@ class BasicTrader(
             return
         }
         val lastTarget = currentDeal!!.targets.last()
-        dealManager?.checkDeal(barSeries.last(), currentDeal!!)
+        dealManager?.checkDeal(barSeries, currentDeal!!)
         when (currentDeal?.side) {
             DealSide.LONG -> {
                 if (lastPrice < currentDeal!!.stopLoss){

@@ -1,5 +1,7 @@
 package com.algoquant.core.statistic
 
+import kotlin.math.abs
+
 class Metric(
     var longProfit: Double = 0.0,
     var longProfitCount: Int = 0,
@@ -52,9 +54,9 @@ class Metric(
             val medianLoss = loss / lossCount
             val ratio = medianProfit / medianLoss
             return if (profit > loss){
-                ratio
+                abs(ratio)
             } else{
-                -ratio
+                ratio
             }
         }
 

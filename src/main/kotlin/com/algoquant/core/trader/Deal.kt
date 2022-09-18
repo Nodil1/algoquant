@@ -11,7 +11,7 @@ class Deal(
     val amount: Double,
     val commissionPercent: Double,
     val targets: Array<Target>,
-    val stopLoss: Double,
+    var stopLoss: Double,
     val strategyComment: StrategyComment,
     var close: Bar? = null,
 ) {
