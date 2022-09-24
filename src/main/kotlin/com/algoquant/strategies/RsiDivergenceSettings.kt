@@ -12,10 +12,10 @@ data class RsiDivergenceSettings(
     companion object {
         fun generate(): Array<RsiDivergenceSettings> {
             val result = mutableListOf<RsiDivergenceSettings>()
-            for (ema in 8..20 step 4) {
-                for (rsi in 9..12) {
-                    for (look in 3..4) {
-                        for (takeProfit in 4..10) {
+            for (ema in 4..20 step 4) {
+                for (rsi in 9..14) {
+                    for (look in 2..4) {
+                        for (takeProfit in 5..10) {
                             result.add(
                                 RsiDivergenceSettings(
                                     rsi,

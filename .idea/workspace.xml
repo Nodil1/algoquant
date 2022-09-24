@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Basic Version">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/data/Symbols.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/indicators/ta4j/SourceType.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/managers/deal/TrailStopManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/statistic/TestResult.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/indicators/ta4j/WrappedIndicator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/indicators/ta4j/WrappedIndicator.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/managers/deal/DealManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/managers/deal/DealManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/statistic/Metric.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/statistic/Metric.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/indicators/rsi/divergence/RsiDivergenceIndicator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/indicators/rsi/divergence/RsiDivergenceIndicator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/tester/Tester.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/tester/Tester.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/trader/BasicTrader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/trader/BasicTrader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/trader/Deal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/trader/Deal.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/strategies/RsiDivergenceSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/strategies/RsiDivergenceSettings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/strategies/RsiDivergenceStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/strategies/RsiDivergenceStrategy.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

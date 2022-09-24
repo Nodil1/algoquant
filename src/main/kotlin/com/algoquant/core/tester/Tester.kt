@@ -24,7 +24,7 @@ class Tester {
         val result = TestResult(nameTest)
         array.onEach { strategy ->
             val jobs = mutableListOf<Job>()
-            val context = newFixedThreadPoolContext(symbols.size, "co")
+            val context = newFixedThreadPoolContext(4, "co")
             var tmpEarn = 0.0
             var profitCount = 0
             var tmpDeals = 0
@@ -35,7 +35,7 @@ class Tester {
                         BasicTrader(
                             RsiDivergenceStrategy(strategy.settings),
                             nameTest,
-                            //dealManager = TrailStopManager()
+                            dealManager = TrailStopManager(3)
                         )
                     )
                     synchronized(earn){
@@ -71,8 +71,7 @@ class Tester {
                 )
             )
             println(tmp.metric)
-            println(tmp.printDeals())
-            it.settings
+            //println(tmp.printDeals())
             result.add(it.settings, tmp)
         }
         return result

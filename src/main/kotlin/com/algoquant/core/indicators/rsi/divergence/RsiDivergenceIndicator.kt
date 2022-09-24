@@ -42,6 +42,7 @@ class RsiDivergenceIndicator(
 
         val lastIdx = highs.last()
         val prevIdx = highs[highs.size - 2]
+
         val rsiCond = rsiValues[prevIdx] > rsiValues[lastIdx] // Последний экстремум меньше, чем текущий RSI
         val priceCond =
             barSeries[prevIdx].high < barSeries[lastIdx].high // Цена последнего экстремума больше, чем текущая
@@ -66,9 +67,9 @@ class RsiDivergenceIndicator(
             return returnNonDiver()
         }
 
-
         val lastIdx = lows.last()
         val prevIdx = lows[lows.size - 2]
+
         val rsiCond = rsiValues[prevIdx] < rsiValues[lastIdx] // Последний экстремум меньше, чем текущий RSI
         val priceCond =
             barSeries[prevIdx].low > barSeries[lastIdx].low // Цена последнего экстремума больше, чем текущая

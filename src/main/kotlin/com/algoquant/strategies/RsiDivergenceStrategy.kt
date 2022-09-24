@@ -20,15 +20,10 @@ class RsiDivergenceStrategy(
     private val SMA = WrappedIndicator(EMAIndicator::class.java, settings.emaPeriod)
     override fun getResult(barSeries: BarSeries): StrategyResult {
         if (barSeries.size < 50) {
-            return StrategyResult(
-                StrategyAction.IDLE,
-                arrayOf(Target(barSeries.last().close * 1.02, 100)),
-                0.0,
-                StrategyComment()
-            )
+            return noSignal()
         }
         val diver = diverIndicator.findDivergence(barSeries)
-        val sliced = barSeries.getLast(50)
+        val sliced = barSeries.getLast(30)
         SMA.calculate(sliced)
         val smaValue = SMA.get(sliced.size-1).doubleValue()
         when (diver.type) {
