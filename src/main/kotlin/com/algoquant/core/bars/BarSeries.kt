@@ -23,6 +23,13 @@ class BarSeries : org.ta4j.core.BarSeries{
         return this
     }
 
+    override fun toString(): String {
+        val tmp = mutableListOf<Double>()
+        bars.onEach {
+            tmp.add(it.closePrice.doubleValue())
+        }
+        return tmp.joinToString()
+    }
     fun add(element: Bar) {
         if (bars.size > 8000) {
             clearOld()
@@ -145,7 +152,8 @@ class BarSeries : org.ta4j.core.BarSeries{
         volume: Num?,
         amount: Num?
     ) {
-        return    }
+        return
+    }
 
     override fun addTrade(tradeVolume: Num?, tradePrice: Num?) {
         return    }

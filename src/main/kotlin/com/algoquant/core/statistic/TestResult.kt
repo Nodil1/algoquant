@@ -16,7 +16,7 @@ class TestResult(
         val tmp = stats.toList().sortedWith(compareBy({ it.second.metric.totalEarn }, { it.second.metric.totalCount })).reversed()
         tmp.onEachIndexed { index, entry ->
             if (index < 3) {
-                println("====$name====\n${entry.second.metric.totalEarn} ${entry.first}\n\n${entry.second.metric}\n==========\n\n")
+                println("====$name====\n${entry.second.metric.totalEarn} ${entry.first}\n\n${entry.second.metric}\n\n ${entry.second.printDeals()}\n\n==========\n\n")
             }
         }
     }

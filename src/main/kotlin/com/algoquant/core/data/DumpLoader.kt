@@ -25,7 +25,7 @@ class DumpLoader {
                             volume = it.getDouble("volume"),
                             barTrades = it.getLong("trades"),
                             timestampStart = it.getLong("timestampStart"),
-                            timestampEnd = it.getLong("timestampEnd")
+                            timestampEnd = it.getLong("timestampStop")
                         )
                     )
                 }
