@@ -15,53 +15,69 @@ import org.ta4j.core.indicators.ATRIndicator
 import org.ta4j.core.indicators.EMAIndicator
 import org.ta4j.core.indicators.HMAIndicator
 import org.ta4j.core.indicators.SMAIndicator
+import org.ta4j.core.indicators.helpers.ClosePriceIndicator
 
 class RsiDivergenceStrategy(
     var settings: RsiDivergenceSettings
 ) : Strategy() {
     private val diverIndicator =
         RsiDivergenceIndicator(settings.rsiPeriod, settings.lookLeft, settings.lookRight)
-    private val SMA = WrappedIndicator(EMAIndicator::class.java, settings.emaPeriod)
-    private val filterSMA = WrappedIndicator(SMAIndicator::class.java, 200)
-    private val ATR = WrappedIndicator(ATRIndicator::class.java, 14)
+
+    private val localBarSeries = BarSeries()
+
+    lateinit var closePrice : ClosePriceIndicator
+    lateinit var SMA : EMAIndicator
+    lateinit var filterSMA : EMAIndicator
+    lateinit var ATR : ATRIndicator
+
+    private fun initIndicators(){
+        closePrice = ClosePriceIndicator(localBarSeries)
+        SMA = EMAIndicator(closePrice, 5)
+        filterSMA = EMAIndicator(closePrice, 10)
+        ATR = ATRIndicator(localBarSeries, 14)
+    }
     override fun getResult(barSeries: BarSeries): StrategyResult {
+        localBarSeries.add(barSeries.last())
+
         if (barSeries.size < 300) {
             return noSignal()
         }
-        val diver = diverIndicator.findDivergence(barSeries)
-        val sliced = barSeries.getLast(30)
-        SMA.calculate(sliced)
-        if (settings.enableSmaFilter) {
-            filterSMA.calculate(barSeries.getLast(220))
+        if (barSeries.size == 300) {
+            initIndicators()
         }
-        val smaValue = SMA.get(sliced.size-1).doubleValue()
+        val diver = diverIndicator.findDivergence(localBarSeries)
+
+        val smaValue = SMA.getValue(closePrice.barSeries.endIndex).doubleValue()
+        val filterSmaValue = filterSMA.getValue(closePrice.barSeries.endIndex).doubleValue()
+        val ATRValue = ATR.getValue(closePrice.barSeries.endIndex).doubleValue()
+        if (smaValue == filterSmaValue) {
+            println("$smaValue $filterSmaValue")
+        }
         when (diver.type) {
             RsiDivergenceType.BULL -> {
-                if (settings.enableSmaFilter && (sliced.last().close > filterSMA.last)) {
+                if (settings.enableSmaFilter && (localBarSeries.last().close > filterSmaValue)) {
                     return noSignal()
                 }
                 if ((barSeries.last().close < diver.rsiCurrentBar!!.low) || (barSeries.last().close > diver.rsiPrevBar!!.low) || (barSeries.last().close < smaValue)) {
                     return noSignal()
                 }
-                ATR.calculate(sliced, SourceType.SERIES)
                 return StrategyResult(
                     StrategyAction.OPEN_LONG,
-                    arrayOf(Target(barSeries.last().close + (ATR.get(sliced.size - 1).doubleValue() * settings.takeProfitAtr) , 100)),
+                    arrayOf(Target(barSeries.last().close + (ATRValue * settings.takeProfitAtr) , 100)),
                     diver.rsiCurrentBar.low,
                     createComment(diver)
                 )
             }
             RsiDivergenceType.BEAR -> {
-                if (settings.enableSmaFilter && (sliced.last().close < filterSMA.last)) {
+                if (settings.enableSmaFilter && (localBarSeries.last().close < filterSmaValue)) {
                     return noSignal()
                 }
                 if ((barSeries.last().close > diver.rsiCurrentBar!!.high) || (barSeries.last().close < diver.rsiPrevBar!!.high) || (barSeries.last().close > smaValue)) {
                     return noSignal()
                 }
-                ATR.calculate(sliced, SourceType.SERIES)
                 return StrategyResult(
                     StrategyAction.OPEN_SHORT,
-                    arrayOf(Target(barSeries.last().close - (ATR.get(sliced.size - 1).doubleValue() * settings.takeProfitAtr), 100)),
+                    arrayOf(Target(barSeries.last().close - (ATRValue * settings.takeProfitAtr), 100)),
                     diver.rsiCurrentBar.high,
                     createComment(diver)
                 )

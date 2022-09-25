@@ -11,7 +11,7 @@ suspend fun main(args: Array<String>) {
     Tester().multipleTest(
         RsiDivergenceStrategy.generate(),
         "d",
-        "5min_long",
+        "5min_60days",
         Symbols.MAIN.toTypedArray(),
         dealManagers
     )

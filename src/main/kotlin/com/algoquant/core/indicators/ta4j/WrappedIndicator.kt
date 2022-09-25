@@ -64,7 +64,7 @@ class WrappedIndicator(private val clazz: Class<*>, val param: Int) {
         }
         private fun createBar(bar: Bar) : BaseBar {
             val triggerTime = LocalDateTime.ofInstant(
-                Instant.ofEpochMilli(bar.timestamp),
+                Instant.ofEpochMilli(bar.timestampStart),
                 TimeZone.getDefault().toZoneId())
 
             val zonedDateTime: ZonedDateTime = triggerTime.atZone(ZoneId.systemDefault())

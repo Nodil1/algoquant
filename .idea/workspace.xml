@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Basic Version">
+    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Start adapting for ta4j">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/bars/Bar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/bars/Bar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/bars/BarSeries.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/bars/BarSeries.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/data/DumpLoader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/data/DumpLoader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/data/Symbols.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/data/Symbols.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/indicators/rsi/divergence/RsiDivergenceIndicator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/indicators/rsi/divergence/RsiDivergenceIndicator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/indicators/ta4j/WrappedIndicator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/indicators/ta4j/WrappedIndicator.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/managers/deal/TrailStopManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/managers/deal/TrailStopManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/statistic/Metric.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/statistic/Metric.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/tester/Tester.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/core/tester/Tester.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/strategies/RsiDivergenceSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/strategies/RsiDivergenceSettings.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/strategies/RsiDivergenceStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/algoquant/strategies/RsiDivergenceStrategy.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,6 +88,14 @@
       <option name="presentableId" value="Default" />
       <updated>1663253888748</updated>
     </task>
+    <task id="LOCAL-00001" summary="Start adapting for ta4j">
+      <created>1664095871801</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664095871801</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -108,6 +111,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic Version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic Version" />
+    <MESSAGE value="Start adapting for ta4j" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start adapting for ta4j" />
   </component>
 </project>
