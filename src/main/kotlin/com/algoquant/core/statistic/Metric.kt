@@ -40,6 +40,19 @@ class Metric(
             return profitCount.toDouble() / totalCount.toDouble()
         }
 
+    operator fun plus(a: Metric): Metric {
+        longProfit += a.longProfit
+        longProfitCount += a.longProfitCount
+        longLoss += a.longLoss
+        longLossCount += a.longLossCount
+
+        shortProfit += a.shortProfit
+        shortProfitCount += a.shortProfitCount
+        shortLoss += a.shortLoss
+        shortLossCount += a.shortLossCount
+        return this
+    }
+
     val profitLossSize: Double
         get() {
             var profitCount = longProfitCount + shortProfitCount // 3
@@ -53,9 +66,9 @@ class Metric(
             val medianProfit = profit / profitCount
             val medianLoss = loss / lossCount
             val ratio = medianProfit / medianLoss
-            return if (profit > loss){
+            return if (profit > loss) {
                 abs(ratio)
-            } else{
+            } else {
                 ratio
             }
         }
@@ -65,7 +78,7 @@ class Metric(
                 "==Long==\n" +
                 "LongProfit: $longProfit$ +$longProfitCount\n" +
                 "LongLoss: $longLoss$ -$longLossCount\n" +
-                "Total long: $totalLong\n"+
+                "Total long: $totalLong\n" +
                 "==Short==\n" +
                 "ShortProfit: $shortProfit$ +$shortProfitCount\n" +
                 "ShortLoss: $shortLoss$ -$shortLossCount\n" +

@@ -6,25 +6,29 @@ data class RsiDivergenceSettings(
     val rsiPeriod: Int,
     val lookRight: Int,
     val lookLeft: Int,
-    val takeProfit: Double,
-    val emaPeriod: Int
+    val takeProfitAtr: Int,
+    val emaPeriod: Int,
+    val enableSmaFilter: Boolean
 ) : StrategySettings() {
     companion object {
         fun generate(): Array<RsiDivergenceSettings> {
             val result = mutableListOf<RsiDivergenceSettings>()
-            for (ema in 4..20 step 4) {
-                for (rsi in 9..14) {
+            for (ema in 3..6 step 2) {
+                for (rsi in 10..14) {
                     for (look in 2..4) {
-                        for (takeProfit in 5..10) {
-                            result.add(
-                                RsiDivergenceSettings(
-                                    rsi,
-                                    look,
-                                    look,
-                                    takeProfit / 100.0,
-                                    ema
+                        for (takeProfit in 4..20 step 3) {
+                            arrayOf(true, false).onEach {
+                                result.add(
+                                    RsiDivergenceSettings(
+                                        rsi,
+                                        look,
+                                        look,
+                                        takeProfit,
+                                        ema,
+                                        it
+                                    )
                                 )
-                            )
+                            }
                         }
                     }
                 }

@@ -25,7 +25,7 @@ class RsiDivergenceIndicator(
         val highs = highLow.findHigh(rsiValues.toTypedArray())
 
         val lows = highLow.findLow(rsiValues.toTypedArray())
-        val bear = findBear(highs,slicedBars, rsiValues.toTypedArray())
+        val bear = findBear(highs, slicedBars, rsiValues.toTypedArray())
         if (bear.type == RsiDivergenceType.BEAR) {
             return bear
         }
@@ -34,9 +34,9 @@ class RsiDivergenceIndicator(
 
     private fun findBear(highs: Array<Int>, barSeries: BarSeries, rsiValues: Array<Double>): RsiDivergenceResult {
         if (rsiValues.last() < 60) {
-            return returnNonDiver()
+            //return returnNonDiver()
         }
-        if (highs.size < 3) {
+        if (highs.size < 2) {
             return returnNonDiver()
         }
 
@@ -61,9 +61,9 @@ class RsiDivergenceIndicator(
 
     private fun findBull(lows: Array<Int>, barSeries: BarSeries, rsiValues: Array<Double>): RsiDivergenceResult {
         if (rsiValues.last() > 40) {
-            return returnNonDiver()
+            //return returnNonDiver()
         }
-        if (lows.size < 3) {
+        if (lows.size < 2) {
             return returnNonDiver()
         }
 
@@ -84,6 +84,7 @@ class RsiDivergenceIndicator(
         }
         return returnNonDiver()
     }
+
     private fun returnNonDiver(): RsiDivergenceResult {
         return RsiDivergenceResult(
             RsiDivergenceType.NONE,

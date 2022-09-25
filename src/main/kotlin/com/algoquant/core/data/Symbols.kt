@@ -58,7 +58,6 @@ class Symbols {
             "MKRUSDT",
             "SNXUSDT",
             "DOTUSDT",
-            "DEFIUSDT",
             "YFIUSDT",
             "BALUSDT",
             "CRVUSDT",

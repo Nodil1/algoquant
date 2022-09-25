@@ -1,5 +1,6 @@
 package com.algoquant.core.bars
 
+import org.ta4j.core.BaseBar
 import java.sql.Date
 import java.text.SimpleDateFormat
 

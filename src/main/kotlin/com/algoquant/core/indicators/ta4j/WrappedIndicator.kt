@@ -21,7 +21,14 @@ import kotlin.time.measureTime
 
 class WrappedIndicator(private val clazz: Class<*>, val param: Int) {
     var indicator: Indicator<Num>? = null
-
+    val last: Double
+    get() = try {
+        indicator!!.getValue(indicator!!.barSeries.endIndex).doubleValue()
+    } catch (e: Exception){
+        e.printStackTrace()
+        println("ERROR ${indicator!!.barSeries.endIndex}")
+        0.0
+    }
     fun calculate(barSeries: BarSeries, dataSource:SourceType = SourceType.CLOSE ) {
         when(dataSource) {
             SourceType.CLOSE -> {
@@ -38,9 +45,9 @@ class WrappedIndicator(private val clazz: Class<*>, val param: Int) {
     }
 
     fun get(i: Int): Num {
-
         return indicator!!.getValue(i)
     }
+
 
     private fun fillSeries(barSeries: BarSeries){
         barSeries.getIterator().forEach {

@@ -14,7 +14,7 @@ class TrailStopManager(val coef: Int = 2) : DealManager() {
     override fun checkDeal(barSeries: BarSeries, deal: Deal) {
         val sliced = barSeries.getLast(30)
         ATR.calculate(sliced, SourceType.SERIES)
-        val range = ATR.get(sliced.size - 1).doubleValue() * coef
+        val range = ATR.last * coef
         val lastPrice = barSeries.last().close
         when (deal.side) {
             DealSide.LONG -> {
