@@ -5,7 +5,7 @@ plugins {
     application
 }
 
-group = "com.algoquant"
+group = "com.nodil"
 version = "1.0"
 
 repositories {

@@ -1,23 +1,18 @@
-import com.algoquant.core.data.DumpLoader
-import com.algoquant.core.data.Symbols
-import com.algoquant.core.managers.deal.TrailStopManager
-import com.algoquant.core.tester.Tester
-import com.algoquant.strategies.RsiDivergenceStrategy
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.newFixedThreadPoolContext
+import com.nodil.algoquant.core.data.Symbols
+import com.nodil.algoquant.core.managers.deal.TrailStopManager
+import com.nodil.algoquant.core.tester.Tester
+import com.nodil.algoquant.strategies.RsiDivergenceStrategy
 
 suspend fun main(args: Array<String>) {
+
     val dealManagers = arrayOf(
         TrailStopManager(6),
     )
     Tester().multipleTest(
         RsiDivergenceStrategy.generate(),
         "d",
-        "5min_30day",
-        Symbols.MAIN.toTypedArray(),
-        dealManagers
+        "5min_60day",
+        Symbols.ALL.toTypedArray(),
     )
 
 /*    val jobs = mutableListOf<Job>()
