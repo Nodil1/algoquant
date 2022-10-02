@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newFixedThreadPoolContext
+import org.ta4j.core.BarSeries
 import kotlin.system.measureTimeMillis
 
 class Tester {
@@ -19,34 +20,25 @@ class Tester {
         symbols: Array<String>,
         printMetric: Boolean = false,
     ) {
-        val earns = mutableListOf<Double>()
+        var j = 0
+        val multipleTestContainer = MultipleTestContainer()
+        val symbolsDump = DumpLoader.loadMultiple(symbols, period)
         array.onEach { strategy ->
             val jobs = mutableListOf<Job>()
-            val context = newFixedThreadPoolContext(2, "co")
-            var tmpEarn = 0.0
-            var tmpProfitPairs = 0
-            val tmpMetric = Metric()
-            val tmpRecord = TestRecord()
-            val tmpProfitPair = arrayListOf<String>()
-            symbols.onEach {
+            val context = newFixedThreadPoolContext(12, "co")
+            val multipleTestResult = MultipleTestResult()
+            symbolsDump.onEach {
                 val job = CoroutineScope(context).launch {
                     val tmp = runBackTest(
-                        DumpLoader.loadFromJson(period, it),
+                        it.value,
                         BasicTrader(
                             RsiDivergenceStrategy(strategy.settings),
                             nameTest,
                             dealManager = TrailStopManager(2),
                         )
                     )
-                    synchronized(earns) {
-                        if (tmp.statistic.summaryEarn > 0){
-                            tmpProfitPairs++
-                            tmpProfitPair.add(it)
-                        }
-                        tmpEarn += tmp.statistic.summaryEarn
-                        tmpMetric + tmp.statistic.metric
-                        tmpRecord + tmp.record
-                        earns.add(tmpEarn)
+                    synchronized(multipleTestResult) {
+                        multipleTestResult.add(it.key, tmp)
                     }
                 }
                 jobs.add(job)
@@ -54,17 +46,12 @@ class Tester {
             for (i in jobs.indices) {
                 jobs[i].join()
             }
-            earns.add(tmpEarn)
-            println("${strategy.settings} Earn $tmpEarn Profit $tmpProfitPairs MaxProfit ${tmpRecord.maxProfit} DropDown ${tmpRecord.dropDown} Long ${tmpMetric.longProfit} Short ${tmpMetric.shortProfit} ")
-            var pairHandle = ""
-            tmpProfitPair.onEach {
-                pairHandle += "\"$it\","
-            }
-            println(pairHandle)
-            if (printMetric) println("Metric: \n$tmpMetric")
+            j++
+            println("$j/${array.size} ${strategy.settings} $multipleTestResult")
+            multipleTestContainer.add(multipleTestResult)
         }
-        earns.sort()
-        println(earns.joinToString())
+        val best = multipleTestContainer.getBestEarn()
+        best.testRecord.toCsv("biba")
     }
 
     fun createBackTest(array: Array<RsiDivergenceStrategy>, nameTest: String, barSeries: com.nodil.algoquant.core.bars.BarSeries): TestResult {

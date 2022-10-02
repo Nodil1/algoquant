@@ -6,7 +6,6 @@ class TestResult(
 
     private val tests = mutableListOf<BackTestResult>()
 
-
     fun add(backTestResult: BackTestResult){
         tests.add(backTestResult)
     }

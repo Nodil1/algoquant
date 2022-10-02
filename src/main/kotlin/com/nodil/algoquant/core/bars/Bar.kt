@@ -38,7 +38,7 @@ class Bar(
         amountTraded = volume * close
     }
     fun getDateTime(): String {
-        val sdf =  SimpleDateFormat("dd MMMM yyyy, HH:mm:ss")
+        val sdf =  SimpleDateFormat("dd MM yyyy, HH:mm:ss")
         val netDate = Date(timestampStart)
         return sdf.format(netDate)
     }

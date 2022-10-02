@@ -4,7 +4,7 @@ class Symbols {
     companion object {
         val RSI_DIVER_PROFIT_SYMBOL =
             arrayListOf(
-                "BTCUSDT", "BCHUSDT", "EOSUSDT", "LTCUSDT", "TRXUSDT", "ETCUSDT", "ADAUSDT"
+                "XRPUSDT","BCHUSDT","EOSUSDT","LTCUSDT","TRXUSDT","ETCUSDT","BTCUSDT","DASHUSDT","LINKUSDT","ADAUSDT",
             )
 
         val MAIN =  arrayListOf(

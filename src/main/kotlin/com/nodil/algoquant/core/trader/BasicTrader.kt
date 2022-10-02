@@ -32,6 +32,7 @@ class BasicTrader(
         logger?.logInfo("Start")
         state = TraderState.IDLE
         strategy.allowTrading = true
+        strategy.barSeries = barSeries
     }
     fun putBar(bar: Bar){
         barSeries.add(bar)
@@ -40,8 +41,10 @@ class BasicTrader(
         logger?.logInfo("New  ${bar.close}. Size ${barSeries.size}")
         try {
             barSeries.add(bar)
-            checkStrategy()
-            checkDeal()
+            if(barSeries.size > 50) {
+                checkStrategy()
+                checkDeal()
+            }
         } catch (e: Exception){
             logger?.logError(e.stackTrace.toString())
             logger?.logError(e.toString())
@@ -145,7 +148,7 @@ class BasicTrader(
             logger?.logInfo("Bot in trade. Return")
             return
         }
-        with(strategy.getResult(barSeries)) {
+        with(strategy.getResult()) {
             when (this.action) {
                 StrategyAction.OPEN_LONG -> {
                     logger?.logInfo("Open long!\n $this")

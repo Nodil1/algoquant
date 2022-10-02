@@ -7,15 +7,24 @@ import org.json.JSONObject
 
 class DumpLoader {
     companion object {
+        fun loadMultiple(array: Array<String>, dir: String): Map<String, BarSeries>{
+            val result = mutableMapOf<String, BarSeries>()
+            array.onEach {
+                result[it] = loadFromJson(dir, it)
+                println("Loaded $it Size ${result[it]!!.size} Start ${result[it]!![0].getDateTime()} End ${result[it]!!.last().getDateTime()}")
+            }
+            return result.toMap()
+        }
         fun loadFromJson(dir: String, filename: String): com.nodil.algoquant.core.bars.BarSeries {
             try {
                 val fileContent =
                     javaClass.getResource("/dumps/$dir/$filename.json")?.readText()
 
                 val root = JSONArray(fileContent)
+                println("Raw size ${root.length()}")
                 val barSeries = com.nodil.algoquant.core.bars.BarSeries()
-                root.onEach {
-                    it as JSONObject
+                for (i in 0 until root.length()){
+                    val it = root.getJSONObject(i)
                     barSeries.add(
                         com.nodil.algoquant.core.bars.Bar(
                             close = it.getDouble("close"),
@@ -25,7 +34,7 @@ class DumpLoader {
                             volume = it.getDouble("volume"),
                             barTrades = it.getLong("trades"),
                             timestampStart = it.getLong("timestampStart"),
-                            timestampEnd = it.getLong("timestampStop")
+                            timestampEnd = it.getLong("timestampEnd")
                         )
                     )
                 }

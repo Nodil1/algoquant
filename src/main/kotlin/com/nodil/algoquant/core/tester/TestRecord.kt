@@ -3,6 +3,7 @@ package com.nodil.algoquant.core.tester
 import com.nodil.algoquant.core.bars.Bar
 import com.nodil.algoquant.core.bars.BarSeries
 import java.io.File
+import kotlin.math.abs
 
 class TestRecord {
     private val prices = BarSeries()
@@ -15,9 +16,11 @@ class TestRecord {
         get() = profits.minOrNull() ?: 0.0
 
     operator fun plus(testRecord: TestRecord) {
-        for (i in testRecord.profits.indices) {
+        for (i in 0 until testRecord.profits.size) {
             if (profits.getOrNull(i) == null) {
                 profits.add(i, testRecord.profits[i])
+                prices.add(testRecord.prices[i])
+
             } else {
                 profits[i] += testRecord.profits[i]
             }
@@ -30,12 +33,13 @@ class TestRecord {
     }
 
     fun toCsv(filename: String) {
-        val f = File("out/$filename.csv")
-        println("SIZE! ${prices.size}")
-        for (i in prices.getIndices()) {
+        val f = File("csv/$filename.csv")
+        println("SIZE! ${prices.size} ${profits.size}")
+        for (i in 0 until prices.size - 2) {
             val p = prices[i].close.toString().replace(".", ",")
             val e = profits[i].toString().replace(".", ",")
-            f.appendText("$p;$e\n")
+            val date = prices[i].getDateTime()
+            f.appendText("$p;$e;$date\n")
         }
     }
 
@@ -43,18 +47,21 @@ class TestRecord {
         var maxProfit = 0.0
         var currentDropDown = 0.0
         val dropDowns = arrayListOf<Double>()
-        profits.onEach {
+        for (i in 0 until prices.size) {
+            val it = profits[i]
             if (it > maxProfit) {
                 dropDowns.add(currentDropDown)
                 maxProfit = it
             } else if (it < maxProfit) {
-                currentDropDown = maxProfit - it
+                if (maxProfit - it > currentDropDown) {
+                    currentDropDown = maxProfit - it
+                }
             }
         }
         val maxDropDown = dropDowns.maxOrNull() ?: 0.0
         val dif = maxProfit - profits.last()
-        return if(maxDropDown < dif) {
-            -dif
+        return if (maxDropDown < dif) {
+            -maxDropDown
         } else {
             -maxDropDown
         }

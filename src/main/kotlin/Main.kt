@@ -5,14 +5,12 @@ import com.nodil.algoquant.strategies.RsiDivergenceStrategy
 
 suspend fun main(args: Array<String>) {
 
-    val dealManagers = arrayOf(
-        TrailStopManager(6),
-    )
+
     Tester().multipleTest(
         RsiDivergenceStrategy.generate(),
         "d",
-        "5min_60day",
-        Symbols.ALL.toTypedArray(),
+        "5min_30days",
+        Symbols.RSI_DIVER_PROFIT_SYMBOL.toTypedArray(),
     )
 
 /*    val jobs = mutableListOf<Job>()

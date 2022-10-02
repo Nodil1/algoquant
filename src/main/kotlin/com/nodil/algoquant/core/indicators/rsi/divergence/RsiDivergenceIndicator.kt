@@ -4,33 +4,34 @@ import com.nodil.algoquant.core.bars.BarSeries
 import com.nodil.algoquant.core.indicators.HighLow
 import com.nodil.algoquant.core.indicators.ta4j.WrappedIndicator
 import org.ta4j.core.indicators.RSIIndicator
+import org.ta4j.core.indicators.helpers.ClosePriceIndicator
 import kotlin.math.roundToInt
 
 class RsiDivergenceIndicator(
     private var period: Int,
     private var lookLeft: Int,
-    private var lookRight: Int
+    private var lookRight: Int,
+    private val barSeries: BarSeries
 ) {
-    private val rsiIndicator = WrappedIndicator(RSIIndicator::class.java, period)
+    private val closePriceIndicator by lazy {ClosePriceIndicator(barSeries)}
+    private val rsiIndicator by lazy {RSIIndicator(closePriceIndicator, period)}
     private val highLow = HighLow(lookRight, lookLeft)
 
     fun findDivergence(barSeries: BarSeries): RsiDivergenceResult {
         val rsiValues = mutableListOf<Double>()
-        val slicedBars = barSeries.getLast(50)
-        rsiIndicator.calculate(slicedBars)
 
-        for (i in slicedBars.getIndices()) {
-            rsiValues += rsiIndicator.get(i).doubleValue().roundToInt().toDouble()
+        for (i in barSeries.size - 50 until barSeries.size) {
+            rsiValues += rsiIndicator.getValue(i).doubleValue().roundToInt().toDouble()
         }
 
         val highs = highLow.findHigh(rsiValues.toTypedArray())
         val lows = highLow.findLow(rsiValues.toTypedArray())
 
-        val bear = findBear(highs, slicedBars, rsiValues.toTypedArray())
+        val bear = findBear(highs, barSeries.getLast(50), rsiValues.toTypedArray())
         if (bear.type == RsiDivergenceType.BEAR) {
             return bear
         }
-        return findBull(lows, slicedBars, rsiValues.toTypedArray())
+        return findBull(lows, barSeries.getLast(50), rsiValues.toTypedArray())
     }
 
     private fun findBear(highs: Array<Int>, barSeries: BarSeries, rsiValues: Array<Double>): RsiDivergenceResult {

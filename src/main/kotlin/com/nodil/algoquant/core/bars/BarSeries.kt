@@ -6,7 +6,7 @@ import java.time.Duration
 import java.time.ZonedDateTime
 import java.util.function.Function
 
-class BarSeries : org.ta4j.core.BaseBarSeries() {
+class BarSeries : org.ta4j.core.BarSeries {
 
     private val bars = mutableListOf<Bar>()
     fun getIterator() = bars.iterator()
@@ -33,10 +33,9 @@ class BarSeries : org.ta4j.core.BaseBarSeries() {
 
     fun add(element: Bar) {
         if (bars.size > 8000) {
-            clearOld()
+           // clearOld()
         }
         bars.add(element)
-        super.addBar(element)
     }
 
     fun last(): Bar {
@@ -72,7 +71,9 @@ class BarSeries : org.ta4j.core.BaseBarSeries() {
         bars.onEach { result.add(it.close) }
         return result.toTypedArray()
     }
-
+    fun remove(i: Int){
+        bars.removeAt(i)
+    }
     fun slice(from: Int, to: Int): BarSeries {
         val tmp = bars.subList(from, to)
         val series = BarSeries()
@@ -176,17 +177,18 @@ class BarSeries : org.ta4j.core.BaseBarSeries() {
         return
     }
 
-    override fun getSubSeries(startIndex: Int, endIndex: Int): BaseBarSeries? {
+    override fun getSubSeries(startIndex: Int, endIndex: Int): BarSeries {
         return slice(startIndex, endIndex)
     }
 
-    override fun numOf(number: Number?): Num {
-        return bars.last().closePrice
+    override fun numOf(number: Number): Num {
+        return this.function().apply(number)
     }
 
     override fun function(): Function<Number, Num> {
         return bars.last().closePrice.function()
     }
+
 
 
 }
