@@ -1,16 +1,25 @@
+import com.nodil.algoquant.core.data.DumpLoader
 import com.nodil.algoquant.core.data.Symbols
-import com.nodil.algoquant.core.managers.deal.TrailStopManager
 import com.nodil.algoquant.core.tester.Tester
+import com.nodil.algoquant.strategies.RsiDivergenceSettings
 import com.nodil.algoquant.strategies.RsiDivergenceStrategy
+import com.nodil.algoquant.strategies.extremumCrossMA.ExtremumCrossMASettings
+import com.nodil.algoquant.strategies.extremumCrossMA.ExtremumCrossMAStrategy
+import com.nodil.algoquant.strategies.harmonicPatterns.HarmonicPatternSettings
+import com.nodil.algoquant.strategies.harmonicPatterns.HarmonicStrategy
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.newFixedThreadPoolContext
 
 suspend fun main(args: Array<String>) {
 
-
     Tester().multipleTest(
-        RsiDivergenceStrategy.generate(),
+        HarmonicPatternSettings.generate(),
+        HarmonicStrategy::class.java,
         "d",
-        "5min_30days",
-        Symbols.RSI_DIVER_PROFIT_SYMBOL.toTypedArray(),
+        "5min_60day",
+        Symbols.MAIN.toTypedArray(),
     )
 
 /*    val jobs = mutableListOf<Job>()
@@ -19,7 +28,11 @@ suspend fun main(args: Array<String>) {
     Symbols.MAIN.onEach {
         val job = CoroutineScope(context).launch {
             val tmp =
-                Tester().createBackTest(RsiDivergenceStrategy.generate(), it, DumpLoader.loadFromJson("5min_30day", it))
+                Tester().createBackTest(
+                    ExtremumCrossMAStrategy.generate(),
+                    it,
+                    DumpLoader.loadFromJson("5min_60day", it)
+                )
             tmp.printBest()
         }
         jobs.add(job)

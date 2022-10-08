@@ -5,31 +5,40 @@ import com.nodil.algoquant.core.bars.BarSeries
 import java.io.File
 import kotlin.math.abs
 
-class TestRecord {
-    private val prices = BarSeries()
-    private val profits = mutableListOf<Double>()
+class TestRecord() {
+    private val profits = mutableListOf<Short>()
+    var prices = BarSeries()
+
     val dropDown: Double
         get() = maxDropDown()
     val maxProfit: Double
-        get() = profits.maxOrNull() ?: 0.0
+        get() = (profits.maxOrNull() ?: 0.0).toDouble()
     val minProfit: Double
-        get() = profits.minOrNull() ?: 0.0
+        get() = (profits.minOrNull() ?: 0.0).toDouble()
+
+
+
 
     operator fun plus(testRecord: TestRecord) {
         for (i in 0 until testRecord.profits.size) {
             if (profits.getOrNull(i) == null) {
                 profits.add(i, testRecord.profits[i])
                 prices.add(testRecord.prices[i])
-
             } else {
-                profits[i] += testRecord.profits[i]
+                profits[i] = (testRecord.profits[i] + profits[i]).toShort()
             }
         }
     }
-
-    fun add(bar: Bar, earn: Double) {
-        prices.add(bar)
-        profits.add(earn)
+    fun getProfits() : Array<Double>{
+        val result = mutableListOf<Double>()
+        profits.onEach {
+            result += it.toDouble()
+        }
+        return result.toTypedArray()
+    }
+    fun add(earn: Double) {
+        //prices.add(bar)
+        profits.add(earn.toInt().toShort())
     }
 
     fun toCsv(filename: String) {
@@ -44,9 +53,9 @@ class TestRecord {
     }
 
     private fun maxDropDown(): Double {
-        var maxProfit = 0.0
-        var currentDropDown = 0.0
-        val dropDowns = arrayListOf<Double>()
+        var maxProfit: Short = 0
+        var currentDropDown: Short = 0
+        val dropDowns = arrayListOf<Short>()
         for (i in 0 until prices.size) {
             val it = profits[i]
             if (it > maxProfit) {
@@ -54,16 +63,17 @@ class TestRecord {
                 maxProfit = it
             } else if (it < maxProfit) {
                 if (maxProfit - it > currentDropDown) {
-                    currentDropDown = maxProfit - it
+                    currentDropDown = (maxProfit - it).toShort()
                 }
             }
         }
-        val maxDropDown = dropDowns.maxOrNull() ?: 0.0
+        val maxDropDown = dropDowns.maxOrNull() ?: 0
         val dif = maxProfit - profits.last()
         return if (maxDropDown < dif) {
-            -maxDropDown
-        } else {
-            -maxDropDown
+            dif.toDouble()
+        }
+        else {
+            maxDropDown.toDouble()
         }
     }
 }

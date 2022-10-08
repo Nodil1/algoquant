@@ -6,10 +6,7 @@ import com.nodil.algoquant.core.indicators.rsi.divergence.RsiDivergenceResult
 import com.nodil.algoquant.core.indicators.rsi.divergence.RsiDivergenceType
 import com.nodil.algoquant.core.indicators.ta4j.SourceType
 import com.nodil.algoquant.core.indicators.ta4j.WrappedIndicator
-import com.nodil.algoquant.core.strategy.Strategy
-import com.nodil.algoquant.core.strategy.StrategyAction
-import com.nodil.algoquant.core.strategy.StrategyComment
-import com.nodil.algoquant.core.strategy.StrategyResult
+import com.nodil.algoquant.core.strategy.*
 import com.nodil.algoquant.core.trader.Target
 import com.nodil.algoquant.core.utils.last
 import org.ta4j.core.indicators.*
@@ -17,15 +14,17 @@ import org.ta4j.core.indicators.helpers.ClosePriceIndicator
 import org.ta4j.core.num.DoubleNum
 
 class RsiDivergenceStrategy(
-    var settings: RsiDivergenceSettings
-) : Strategy() {
+    override val settings: RsiDivergenceSettings
+) : Strategy(settings) {
     private val diverIndicator by lazy {
         RsiDivergenceIndicator(settings.rsiPeriod, settings.lookLeft, settings.lookRight, barSeries) }
     private val closePriceIndicator by lazy { ClosePriceIndicator(barSeries) }
 
-    private val SMA by lazy { ParabolicSarIndicator(barSeries) }
-    private val filterSMA  by lazy { ZLEMAIndicator(closePriceIndicator, 200) }
+    private val SMA by lazy { ZLEMAIndicator(closePriceIndicator, settings.emaPeriod) }
+    private val filterSMA  by lazy { SMAIndicator(closePriceIndicator, 200) }
     private val ATR by lazy { ATRIndicator(barSeries, 14) }
+
+
     override fun getResult(): StrategyResult {
         if (barSeries.size < 501) {
             return noSignal()
@@ -80,6 +79,7 @@ class RsiDivergenceStrategy(
 
         return comment
     }
+
     companion object {
         fun generate(): Array<RsiDivergenceStrategy> {
             val result = mutableListOf<RsiDivergenceStrategy>()

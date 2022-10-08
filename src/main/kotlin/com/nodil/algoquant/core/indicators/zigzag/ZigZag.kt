@@ -351,7 +351,12 @@ class ZigZag(
     }
 
     fun getZigzagBuffer(): DoubleArray {
-        return zigzagBuffer.clone()
+        val tmp =  zigzagBuffer.clone()
+        val result = mutableListOf<Double>()
+        tmp.onEach {
+            if (it != 0.0) result.add(it)
+        }
+        return result.toDoubleArray()
     }
 
     fun getHighMapBuffer(): DoubleArray {

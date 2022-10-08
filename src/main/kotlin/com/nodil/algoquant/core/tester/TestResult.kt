@@ -3,7 +3,6 @@ package com.nodil.algoquant.core.tester
 class TestResult(
     val name: String
 ) {
-
     private val tests = mutableListOf<BackTestResult>()
 
     fun add(backTestResult: BackTestResult){

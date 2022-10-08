@@ -12,7 +12,6 @@ class Metric(
     var shortProfitCount: Int = 0,
     var shortLoss: Double = 0.0,
     var shortLossCount: Int = 0,
-
     ) {
     val longCount: Int
         get() = longLossCount + longProfitCount
@@ -60,7 +59,6 @@ class Metric(
             val profit = longProfit + shortProfit
             var lossCount = longLossCount + shortLossCount // 2
             val loss = longLoss + shortLoss
-
 
             if (profitCount == 0) profitCount = 1
             if (lossCount == 0) lossCount = 1

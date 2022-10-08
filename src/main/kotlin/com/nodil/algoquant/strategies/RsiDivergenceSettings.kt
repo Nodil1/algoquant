@@ -13,21 +13,23 @@ data class RsiDivergenceSettings(
     companion object {
         fun generate(): Array<RsiDivergenceSettings> {
             val result = mutableListOf<RsiDivergenceSettings>()
-            for (ema in 12..12 step 4) {
-                for (rsi in 7..17){
-                    for (look in 4..4) {
-                        for (takeProfit in 1..30 step 5) {
-                            arrayOf(true, false).onEach {
-                                result.add(
-                                    RsiDivergenceSettings(
-                                        rsi,
-                                        look,
-                                        look,
-                                        takeProfit,
-                                        ema,
-                                        it
+            for (ema in 6..16 step 4) {
+                for (rsi in 10..14){
+                    for (lookLeft in 4..4) {
+                        for (lookRight in 2..3) {
+                            for (takeProfit in 1..5 step 1) {
+                                arrayOf(true, false).onEach {
+                                    result.add(
+                                        RsiDivergenceSettings(
+                                            rsi,
+                                            lookRight,
+                                            lookLeft,
+                                            takeProfit,
+                                            ema,
+                                            it
+                                        )
                                     )
-                                )
+                                }
                             }
                         }
                     }

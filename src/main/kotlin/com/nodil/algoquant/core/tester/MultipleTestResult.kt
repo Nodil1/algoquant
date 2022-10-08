@@ -1,18 +1,22 @@
 package com.nodil.algoquant.core.tester
 
 import com.nodil.algoquant.core.statistic.Metric
+import com.nodil.algoquant.core.utils.statistics.SharpeRatio
 
-class MultipleTestResult{
+class MultipleTestResult(
+    val startMoney: Double = 100.0
+){
     private val pairs = mutableMapOf<String, BackTestResult>()
 
     val summaryEarn : Double
     get() {
         var sum = 0.0
         pairs.onEach {
-            sum += it.value.statistic.summaryEarn
+            sum += it.value.statistic.metric.totalEarn
         }
         return sum
     }
+
     val profitPairPercent : Int
     get() {
         var profitCount = 0
@@ -23,6 +27,12 @@ class MultipleTestResult{
         }
         return ((profitCount.toDouble() / (pairs.size.toDouble())) * 100).toInt()
     }
+
+    val sharp: Double
+    get() {
+        return SharpeRatio.calc(3.0, (summaryEarn/startMoney) * 100, testRecord.getProfits())
+    }
+
     val metric : Metric
     get() {
         val tmpMetric = Metric()
@@ -31,6 +41,7 @@ class MultipleTestResult{
         }
         return tmpMetric
     }
+
     val testRecord : TestRecord
     get() {
         val tmpRecord = TestRecord()

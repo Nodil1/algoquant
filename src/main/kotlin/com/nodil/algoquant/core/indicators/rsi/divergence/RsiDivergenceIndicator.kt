@@ -35,7 +35,7 @@ class RsiDivergenceIndicator(
     }
 
     private fun findBear(highs: Array<Int>, barSeries: BarSeries, rsiValues: Array<Double>): RsiDivergenceResult {
-        if (rsiValues.last() < 60) {
+        if (rsiValues.last() < 70) {
            // return returnNonDiver()
         }
         if (highs.size < 2) {
@@ -53,7 +53,7 @@ class RsiDivergenceIndicator(
                 var isCross = false
                 for (j in prevIdx until lastIdx) {
                     val it = rsiValues[j]
-                    if (it < 60){
+                    if (it < 50){
                         //isCross = true
                         break
                     }
@@ -72,8 +72,8 @@ class RsiDivergenceIndicator(
     }
 
     private fun findBull(lows: Array<Int>, barSeries: BarSeries, rsiValues: Array<Double>): RsiDivergenceResult {
-        if (rsiValues.last() > 40) {
-           // return returnNonDiver()
+        if (rsiValues.last() > 30) {
+            //return returnNonDiver()
         }
         if (lows.size < 2) {
             return returnNonDiver()
@@ -90,8 +90,8 @@ class RsiDivergenceIndicator(
                 var isCross = false
                 for (j in prevIdx until lastIdx) {
                     val it = rsiValues[j]
-                    if (it > 40){
-                       // isCross = true
+                    if (it > 50){
+                        //isCross = true
                         break
                     }
                 }

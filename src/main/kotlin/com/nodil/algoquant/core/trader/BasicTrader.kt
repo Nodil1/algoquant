@@ -166,9 +166,9 @@ class BasicTrader(
     private fun openDeal(side: DealSide, targets: Array<Target>, stopLoss: Double, comment: StrategyComment) {
         logger?.logDeal("Open deal! Inputs: Side $side, T: ${targets.joinToString()}, SL: $stopLoss \n$comment")
         if (state == TraderState.IDLE) {
-            val allowedMoney = moneyManager?.getDealSizeInDollars(statistic) ?: 100
+            val allowedMoney = moneyManager?.getDealSizeInDollars(statistic, side) ?: 100.0
             logger?.logDeal("Allowed money $allowedMoney")
-            if (allowedMoney == 0) return
+            if (allowedMoney == 0.0) return
             val amount = if (connector != null) {
                 val precision = connector.getSymbolPrecision(symbolName)
                 val rawAmount = allowedMoney / lastPrice

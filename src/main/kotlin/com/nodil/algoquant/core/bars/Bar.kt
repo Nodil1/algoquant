@@ -1,7 +1,5 @@
 package com.nodil.algoquant.core.bars
 
-import org.ta4j.core.BaseBar
-import org.ta4j.core.num.DecimalNum
 import org.ta4j.core.num.DoubleNum
 import org.ta4j.core.num.Num
 import java.sql.Date
@@ -20,25 +18,13 @@ class Bar(
     val timestampEnd: Long,
 
     ) : org.ta4j.core.Bar{
-    private var zTimeBegin : ZonedDateTime
-    private var zTimeEnd : ZonedDateTime
     private var amountTraded : Double = 0.0
     init {
-        val triggerTimeStart = LocalDateTime.ofInstant(
-            Instant.ofEpochMilli(timestampStart),
-            TimeZone.getDefault().toZoneId())
-
-        val triggerTimeEnd = LocalDateTime.ofInstant(
-            Instant.ofEpochMilli(timestampEnd),
-            TimeZone.getDefault().toZoneId())
-
-        zTimeBegin = triggerTimeStart.atZone(ZoneId.systemDefault())
-        zTimeEnd = triggerTimeEnd.atZone(ZoneId.systemDefault())
-
         amountTraded = volume * close
     }
     fun getDateTime(): String {
-        val sdf =  SimpleDateFormat("dd MM yyyy, HH:mm:ss")
+
+        val sdf =  SimpleDateFormat("dd MMMM yyyy, HH:mm:ss")
         val netDate = Date(timestampStart)
         return sdf.format(netDate)
     }
@@ -67,11 +53,23 @@ class Bar(
 
     override fun getAmount(): DoubleNum = DoubleNum.valueOf(volume)
 
-    override fun getTimePeriod(): Duration = Duration.between(zTimeBegin.toLocalDateTime(), zTimeEnd.toLocalDateTime());
+    override fun getTimePeriod(): Duration = Duration.between(beginTime, endTime)
 
-    override fun getBeginTime(): ZonedDateTime = zTimeBegin
+    override fun getBeginTime(): ZonedDateTime {
+        val triggerTimeStart = LocalDateTime.ofInstant(
+            Instant.ofEpochMilli(timestampStart),
+            TimeZone.getDefault().toZoneId()
+        )
+        return triggerTimeStart.atZone(ZoneId.systemDefault())
+    }
 
-    override fun getEndTime(): ZonedDateTime = zTimeEnd
+    override fun getEndTime(): ZonedDateTime {
+        val triggerTimeEnd = LocalDateTime.ofInstant(
+            Instant.ofEpochMilli(timestampEnd),
+            TimeZone.getDefault().toZoneId())
+
+        return triggerTimeEnd.atZone(ZoneId.systemDefault())
+    }
 
     override fun addTrade(tradeVolume: Num?, tradePrice: Num?) {
         return

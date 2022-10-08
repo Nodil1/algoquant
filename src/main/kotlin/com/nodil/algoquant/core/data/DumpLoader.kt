@@ -15,18 +15,18 @@ class DumpLoader {
             }
             return result.toMap()
         }
-        fun loadFromJson(dir: String, filename: String): com.nodil.algoquant.core.bars.BarSeries {
+        fun loadFromJson(dir: String, filename: String): BarSeries {
             try {
                 val fileContent =
                     javaClass.getResource("/dumps/$dir/$filename.json")?.readText()
 
                 val root = JSONArray(fileContent)
                 println("Raw size ${root.length()}")
-                val barSeries = com.nodil.algoquant.core.bars.BarSeries()
+                val barSeries = BarSeries()
                 for (i in 0 until root.length()){
                     val it = root.getJSONObject(i)
                     barSeries.add(
-                        com.nodil.algoquant.core.bars.Bar(
+                        Bar(
                             close = it.getDouble("close"),
                             open = it.getDouble("open"),
                             low = it.getDouble("min"),
@@ -34,7 +34,7 @@ class DumpLoader {
                             volume = it.getDouble("volume"),
                             barTrades = it.getLong("trades"),
                             timestampStart = it.getLong("timestampStart"),
-                            timestampEnd = it.getLong("timestampEnd")
+                            timestampEnd = it.getLong("timestampStop")
                         )
                     )
                 }
@@ -42,7 +42,7 @@ class DumpLoader {
             } catch (e: Exception) {
                 e.printStackTrace()
                 println(filename)
-                return com.nodil.algoquant.core.bars.BarSeries()
+                return BarSeries()
             }
         }
     }

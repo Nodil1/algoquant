@@ -4,18 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestContainer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestResult.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/Extensions.kt" afterDir="false" />
+    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Create Sharp Ratio">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/FivePointPattern.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/FourPointPattern.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/HarmonicPattern.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/HarmonicPatternResult.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/HarmonicPatternType.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/managers/money/SideBasedManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/statistics/RMSE.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/statistics/SharpeRatio.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/extremumCrossMA/ExtremumCrossMASettings.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/extremumCrossMA/ExtremumCrossMAStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicPatternSettings.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicStrategy.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/bars/Bar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/bars/Bar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/bars/BarSeries.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/bars/BarSeries.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/data/DumpLoader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/data/DumpLoader.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/data/Symbols.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/data/Symbols.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/rsi/divergence/RsiDivergenceIndicator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/rsi/divergence/RsiDivergenceIndicator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/zigzag/ZigZag.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/zigzag/ZigZag.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/managers/money/MoneyManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/managers/money/MoneyManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/statistic/Metric.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/statistic/Metric.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/statistic/Statistic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/statistic/Statistic.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/strategy/Strategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/strategy/Strategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/strategy/StrategyResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/strategy/StrategyResult.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/BackTestResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/BackTestResult.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestContainer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestContainer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestResult.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestRecord.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestRecord.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestResult.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/Tester.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/Tester.kt" afterDir="false" />
@@ -47,6 +63,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="InstancesTracker">
+    <option name="classes">
+      <map>
+        <entry key="com.nodil.algoquant.core.bars.Bar" value="CREATION" />
+        <entry key="java.lang.Double" value="CREATION" />
+        <entry key="java.util.ArrayList" value="CREATION" />
+        <entry key="org.ta4j.core.num.DoubleNum" value="CREATION" />
+      </map>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -61,27 +87,32 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/trader/algoquant&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/trader/algoquant/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\trader\algoquant\src\main\kotlin\com\nodil\algoquant\strategies\harmonicPatterns" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\trader\algoquant\src\main\kotlin\com\algoquant\core\indicators\rsi\divergence" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.nodil.algoquant.core.utils.statistic" />
       <recent name="com.algoquant.core.indicators.rsi" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.nodil.algoquant.core.managers.money" />
       <recent name="com.algoquant.core.indicators" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH" value="jbr-11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="MainKt" />
       <module name="algoquant.main" />
@@ -138,6 +169,7 @@
     <MESSAGE value="Start adapting for ta4j" />
     <MESSAGE value="Working" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Create Sharp Ratio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Sharp Ratio" />
   </component>
 </project>
