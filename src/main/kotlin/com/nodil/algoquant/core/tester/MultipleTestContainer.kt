@@ -29,4 +29,27 @@ class MultipleTestContainer {
         println("BEST: ${tmp.last()}")
         return tmp.last()
     }
+
+    fun getBestRecoveryFactor(): MultipleTestResult {
+        val tmp = tests.sortedWith(compareBy { it.recoveryFactor })
+        println("BEST: ${tmp.last()}")
+        return tmp.last()
+    }
+    fun getBestProfitFactor(): MultipleTestResult {
+        val tmp = tests.sortedWith(compareBy { it.profitFactor })
+        println("BEST: ${tmp.last()}")
+        return tmp.last()
+    }
+
+    fun getBestMedian(): MultipleTestResult {
+        val tmp = tests.sortedWith(compareBy { it.median })
+        println("BEST: ${tmp.last()}")
+        return tmp.last()
+    }
+
+    fun getBestMean(): MultipleTestResult {
+        val tmp = tests.sortedWith(compareBy { it.mean })
+        println("BEST: ${tmp.last()}")
+        return tmp.last()
+    }
 }

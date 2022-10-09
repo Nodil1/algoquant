@@ -18,7 +18,7 @@ suspend fun main(args: Array<String>) {
         HarmonicPatternSettings.generate(),
         HarmonicStrategy::class.java,
         "d",
-        "5min_60day",
+        "1min_30days",
         Symbols.MAIN.toTypedArray(),
     )
 

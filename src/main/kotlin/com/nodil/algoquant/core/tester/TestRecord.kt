@@ -67,6 +67,7 @@ class TestRecord() {
                 }
             }
         }
+        dropDowns.add(currentDropDown)
         val maxDropDown = dropDowns.maxOrNull() ?: 0
         val dif = maxProfit - profits.last()
         return if (maxDropDown < dif) {

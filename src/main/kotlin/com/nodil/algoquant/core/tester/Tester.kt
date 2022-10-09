@@ -56,7 +56,10 @@ class Tester {
         val best = multipleTestContainer.getBestEarn()
         best.testRecord.toCsv("biba")
         multipleTestContainer.getBestSharp().testRecord.toCsv("sharp")
-
+        multipleTestContainer.getBestProfitFactor().testRecord.toCsv("pf")
+        multipleTestContainer.getBestRecoveryFactor().testRecord.toCsv("recovery")
+        multipleTestContainer.getBestMean().testRecord.toCsv("mean")
+        multipleTestContainer.getBestMedian().testRecord.toCsv("median")
 
     }
 

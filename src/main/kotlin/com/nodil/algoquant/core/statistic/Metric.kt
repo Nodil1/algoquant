@@ -25,6 +25,10 @@ class Metric(
         get() = shortLoss + shortProfit
     val totalEarn: Double
         get() = totalLong + totalShort
+    val totalLoss: Double
+        get() = longLoss + shortLoss
+    val totalProfit: Double
+        get() = longProfit + shortProfit
 
 
     val profitLossRatio: Double

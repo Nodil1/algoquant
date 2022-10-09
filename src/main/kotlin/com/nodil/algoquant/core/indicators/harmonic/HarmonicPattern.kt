@@ -42,6 +42,12 @@ class HarmonicPattern(
         if (abcdResult != noPattern) {
             return abcdResult
         }
+        FivePointPattern.ALL.onEach {
+            val fiveResult = findFivePoint(pivots, it)
+            if (fiveResult != noPattern) {
+                return fiveResult
+            }
+        }
         return noPattern
     }
 
@@ -88,7 +94,61 @@ class HarmonicPattern(
         }
         return noPattern
     }
+    private fun findFivePoint(pivots: DoubleArray, pattern: FivePointPattern) : HarmonicPatternResult {
+        val x = pivots[pivots.size - 5]
+        val a = pivots[pivots.size - 4]
+        val b = pivots[pivots.size - 3]
+        val c = pivots[pivots.size - 2]
+        val d = pivots[pivots.size - 1]
 
+        val ab = getFibonacciPercent(x, a, b)
+        val bc = getFibonacciPercent(a, b, c)
+        val cd = getFibonacciPercent(b, c, d)
+        val xd = getFibonacciPercent(x, a, d)
+
+        var abInRange = false
+        var bcInRange = false
+        var cdInRange = false
+        var xdInRange = false
+        for (i in pattern.AB.indices) {
+            val fib = pattern.AB[i]
+            abInRange = (ab > fib - fib * errorRate) && (ab < fib + fib * errorRate)
+            if (abInRange) break
+        }
+        for (i in pattern.BC.indices) {
+            val fib =  pattern.BC[i]
+            bcInRange = (bc > fib - fib * errorRate) && (bc < fib + fib * errorRate)
+            if (bcInRange) break
+        }
+
+        for (i in pattern.CD.indices) {
+            val fib = pattern.CD[i]
+            cdInRange = (cd > fib - fib * errorRate) && (cd < fib + fib * errorRate)
+            if (cdInRange) break
+        }
+
+        for (i in pattern.XD.indices) {
+            val fib = pattern.XD[i]
+            xdInRange = (xd > fib - fib * errorRate) && (xd < fib + fib * errorRate)
+            if (xdInRange) break
+        }
+        if (abInRange && bcInRange && cdInRange && xdInRange) {
+            return if (a > b) {
+                HarmonicPatternResult(
+                    HarmonicPatternType.ABCD,
+                    mapOf("BC" to bc, "CD" to cd),
+                    DealSide.LONG
+                )
+            } else {
+                HarmonicPatternResult(
+                    HarmonicPatternType.ABCD,
+                    mapOf("BC" to bc, "CD" to cd),
+                    DealSide.SHORT
+                )
+            }
+        }
+        return noPattern
+    }
     private fun getFibonacciPercent(min: Double, max: Double, pivot: Double): Double {
         val percent = kotlin.math.abs((pivot - max) / (max - min))
         return round(percent * 1000) / 1000
