@@ -4,22 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/statistics/Median.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/statistics/ProfitFactor.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/statistics/RecoveryFactor.kt" afterDir="false" />
+    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Fixes">
+      <change afterPath="$PROJECT_DIR$/src/test/ZigZagTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/data/DumpLoader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/data/DumpLoader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/FivePointPattern.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/FivePointPattern.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/HarmonicPattern.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/HarmonicPattern.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/statistic/Metric.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/statistic/Metric.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestContainer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestContainer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestResult.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestRecord.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestRecord.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/Tester.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/Tester.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/Extensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/Extensions.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicPatternSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicPatternSettings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicStrategy.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +88,7 @@
   </component>
   <component name="RunManager">
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="graalvm-17" />
+      <option name="ALTERNATIVE_JRE_PATH" value="jbr-11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="MainKt" />
       <module name="algoquant.main" />
@@ -152,6 +146,7 @@
     <MESSAGE value="Working" />
     <MESSAGE value="Update" />
     <MESSAGE value="Create Sharp Ratio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Sharp Ratio" />
+    <MESSAGE value="Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
   </component>
 </project>

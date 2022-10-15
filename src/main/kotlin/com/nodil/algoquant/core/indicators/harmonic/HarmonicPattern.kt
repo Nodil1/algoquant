@@ -52,7 +52,7 @@ class HarmonicPattern(
     }
 
     private fun findABCD(pivots: DoubleArray): HarmonicPatternResult {
-        val pivotsSize = pivots.size
+        val pivotsSize = pivots.size - 1
 
         val a = pivots[pivotsSize - 4]
         val b = pivots[pivotsSize - 3]

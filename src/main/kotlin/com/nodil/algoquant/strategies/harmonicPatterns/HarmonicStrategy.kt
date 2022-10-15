@@ -17,6 +17,9 @@ class HarmonicStrategy(
 ) : Strategy(settings) {
     private val harmonicPatternIndicator by lazy { HarmonicPattern(settings.depth, settings.deviation, settings.backStep, settings.errorRate)}
     private val ATR by lazy { ATRIndicator(barSeries, 14) }
+    private val closePriceIndicator by lazy { ClosePriceIndicator(barSeries) }
+
+    private val RSI by lazy { RSIIndicator(closePriceIndicator, 14) }
 
 
     override fun getResult(): StrategyResult {
@@ -28,7 +31,11 @@ class HarmonicStrategy(
             return noSignal()
         }
         when (resultPattern.side) {
+
             DealSide.LONG -> {
+                if(RSI.last().doubleValue() < 70) {
+                    return noSignal()
+                }
                 return StrategyResult(
                     StrategyAction.OPEN_LONG,
                     arrayOf(Target(barSeries.last().close + (ATR.last().doubleValue() * settings.takeProfitAtr) , 100)),
@@ -37,6 +44,9 @@ class HarmonicStrategy(
                 )
             }
             DealSide.SHORT -> {
+                if(RSI.last().doubleValue() > 70) {
+                    return noSignal()
+                }
                 return StrategyResult(
                     StrategyAction.OPEN_SHORT,
                     arrayOf(Target(barSeries.last().close - (ATR.last().doubleValue() * settings.takeProfitAtr) , 100)),

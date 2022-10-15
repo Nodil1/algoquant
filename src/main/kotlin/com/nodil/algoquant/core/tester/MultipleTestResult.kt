@@ -53,7 +53,7 @@ class MultipleTestResult(
 
     val sharp: Double
         get() {
-            return SharpeRatio.calc(3.0, (summaryEarn / startMoney) * 100, testRecord.getProfits())
+            return SharpeRatio.calc(startMoney * 0.03, summaryEarn, testRecord.getProfits())
         }
 
     val profitFactor: Double

@@ -36,8 +36,8 @@ class Tester {
                         BasicTrader(
                             strategyClass.constructors[0].newInstance(setting) as Strategy,
                             nameTest,
-                            dealManager = TrailStopManager(3),
-                            moneyManager = SideBasedManager(100.0)
+                            dealManager = TrailStopManager(2),
+                            //moneyManager = SideBasedManager(100.0)
                         )
                     )
                     synchronized(multipleTestResult) {
@@ -83,7 +83,7 @@ class Tester {
                     BasicTrader(
                         strategyClass.constructors[0].newInstance(setting) as Strategy,
                         nameTest,
-                        // dealManager = TrailStopManager(2),
+                        dealManager = TrailStopManager(2),
                         moneyManager = SideBasedManager(100.0)
                     )
                 )

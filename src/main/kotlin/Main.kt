@@ -15,10 +15,10 @@ import kotlinx.coroutines.newFixedThreadPoolContext
 suspend fun main(args: Array<String>) {
 
     Tester().multipleTest(
-        HarmonicPatternSettings.generate(),
-        HarmonicStrategy::class.java,
+        RsiDivergenceSettings.generate(),
+        RsiDivergenceStrategy::class.java,
         "d",
-        "1min_30days",
+        "1min_15days",
         Symbols.MAIN.toTypedArray(),
     )
 
