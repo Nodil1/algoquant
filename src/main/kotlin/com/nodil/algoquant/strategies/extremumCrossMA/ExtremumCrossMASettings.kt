@@ -1,7 +1,6 @@
 package com.nodil.algoquant.strategies.extremumCrossMA
 
 import com.nodil.algoquant.core.strategy.StrategySettings
-import com.nodil.algoquant.strategies.RsiDivergenceSettings
 
 data class ExtremumCrossMASettings(
     val fastMA: Int = 200,

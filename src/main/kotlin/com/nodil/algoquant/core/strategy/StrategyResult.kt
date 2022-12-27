@@ -1,7 +1,5 @@
 package com.nodil.algoquant.core.strategy
 
-import com.nodil.algoquant.core.trader.Target
-
 class StrategyResult(
     var action: StrategyAction,
     var targets: Array<com.nodil.algoquant.core.trader.Target>,

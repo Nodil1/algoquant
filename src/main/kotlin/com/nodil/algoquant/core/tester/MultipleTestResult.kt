@@ -13,6 +13,7 @@ class MultipleTestResult(
 ) {
     private val pairs = mutableMapOf<String, BackTestResult>()
 
+
     val summaryEarn: Double
         get() {
             var sum = 0.0
@@ -53,16 +54,25 @@ class MultipleTestResult(
 
     val sharp: Double
         get() {
+            if (summaryEarn < 0){
+                return -1.0
+            }
             return SharpeRatio.calc(startMoney * 0.03, summaryEarn, testRecord.getProfits())
         }
 
     val profitFactor: Double
         get() {
+            if (summaryEarn < 0){
+                return -1.0
+            }
             return ProfitFactor.calc(metric.totalProfit, abs(metric.totalLoss))
         }
 
     val recoveryFactor: Double
         get() {
+            if (summaryEarn < 0){
+                return -1.0
+            }
             return RecoveryFactor.calc(summaryEarn, testRecord.dropDown)
         }
 
@@ -77,6 +87,12 @@ class MultipleTestResult(
     fun add(pairName: String, testResult: BackTestResult) {
         pairs[pairName] = testResult
     }
+    fun printDeals(){
+        pairs.onEach {
+            println(it.key)
+            it.value.statistic.printDeals()
+        }
+    }
 
     override fun toString(): String {
         val metric = this.metric
@@ -90,4 +106,6 @@ class MultipleTestResult(
                 "Statistic Analysis: Sharpe Ratio: ${sharp.roundToTwoDecimal()} PF: ${profitFactor.roundToTwoDecimal()} RF: ${recoveryFactor.roundToTwoDecimal()} Median: ${median.roundToTwoDecimal()} Mean: ${mean.roundToTwoDecimal()}\n" +
                 "$pairHandle"
     }
+
+
 }

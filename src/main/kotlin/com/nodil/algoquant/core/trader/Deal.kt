@@ -1,6 +1,5 @@
 package com.nodil.algoquant.core.trader
 
-import com.nodil.algoquant.core.bars.Bar
 import com.nodil.algoquant.core.strategy.StrategyComment
 import kotlin.math.abs
 

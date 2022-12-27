@@ -1,7 +1,7 @@
 package com.nodil.algoquant.core.strategy
 
 import com.nodil.algoquant.core.bars.BarSeries
-import com.nodil.algoquant.core.trader.Target
+
 abstract class Strategy(
     open val settings: StrategySettings
 ) {

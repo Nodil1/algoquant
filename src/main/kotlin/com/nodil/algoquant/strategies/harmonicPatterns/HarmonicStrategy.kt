@@ -2,14 +2,15 @@ package com.nodil.algoquant.strategies.harmonicPatterns
 
 import com.nodil.algoquant.core.indicators.harmonic.HarmonicPattern
 import com.nodil.algoquant.core.indicators.harmonic.HarmonicPatternType
-import com.nodil.algoquant.core.indicators.rsi.divergence.RsiDivergenceIndicator
-import com.nodil.algoquant.core.indicators.rsi.divergence.RsiDivergenceResult
-import com.nodil.algoquant.core.indicators.rsi.divergence.RsiDivergenceType
-import com.nodil.algoquant.core.strategy.*
+import com.nodil.algoquant.core.strategy.Strategy
+import com.nodil.algoquant.core.strategy.StrategyAction
+import com.nodil.algoquant.core.strategy.StrategyComment
+import com.nodil.algoquant.core.strategy.StrategyResult
 import com.nodil.algoquant.core.trader.DealSide
 import com.nodil.algoquant.core.trader.Target
 import com.nodil.algoquant.core.utils.last
-import org.ta4j.core.indicators.*
+import org.ta4j.core.indicators.ATRIndicator
+import org.ta4j.core.indicators.RSIIndicator
 import org.ta4j.core.indicators.helpers.ClosePriceIndicator
 
 class HarmonicStrategy(
@@ -31,7 +32,6 @@ class HarmonicStrategy(
             return noSignal()
         }
         when (resultPattern.side) {
-
             DealSide.LONG -> {
                 if(RSI.last().doubleValue() < 70) {
                     return noSignal()

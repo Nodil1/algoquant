@@ -1,22 +1,14 @@
 package com.nodil.algoquant.core.indicators.ta4j
 
-import com.nodil.algoquant.core.bars.Bar
-import com.nodil.algoquant.core.bars.BarSeries
 import org.ta4j.core.BaseBar
 import org.ta4j.core.BaseBarSeries
 import org.ta4j.core.BaseBarSeriesBuilder
 import org.ta4j.core.Indicator
-import org.ta4j.core.indicators.ATRIndicator
-import org.ta4j.core.indicators.CachedIndicator
-import org.ta4j.core.indicators.RSIIndicator
 import org.ta4j.core.indicators.helpers.ClosePriceIndicator
 import org.ta4j.core.num.DoubleNum
 import org.ta4j.core.num.Num
 import java.time.*
 import java.util.*
-import kotlin.system.measureNanoTime
-import kotlin.system.measureTimeMillis
-import kotlin.time.measureTime
 
 
 class WrappedIndicator<ParamType>(private val clazz: Class<*>, val param: ParamType) {

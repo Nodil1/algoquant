@@ -1,7 +1,6 @@
 package com.nodil.algoquant.core.trader
 
 import com.nodil.algoquant.core.bars.Bar
-import com.nodil.algoquant.core.bars.BarSeries
 import com.nodil.algoquant.core.exchange.Connector
 import com.nodil.algoquant.core.managers.deal.DealManager
 import com.nodil.algoquant.core.managers.money.MoneyManager
@@ -36,6 +35,12 @@ class BasicTrader(
     }
     fun putBar(bar: Bar){
         barSeries.add(bar)
+    }
+
+    fun stop(){
+        if (currentDeal != null){
+            closeDeal()
+        }
     }
     fun update(bar: com.nodil.algoquant.core.bars.Bar) {
         logger?.logInfo("New  ${bar.close}. Size ${barSeries.size}")

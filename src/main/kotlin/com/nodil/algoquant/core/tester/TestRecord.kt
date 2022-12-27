@@ -1,9 +1,7 @@
 package com.nodil.algoquant.core.tester
 
-import com.nodil.algoquant.core.bars.Bar
 import com.nodil.algoquant.core.bars.BarSeries
 import java.io.File
-import kotlin.math.abs
 
 class TestRecord() {
     private val profits = mutableListOf<Short>()

@@ -3,7 +3,6 @@ package com.nodil.algoquant.core.data
 import com.nodil.algoquant.core.bars.Bar
 import com.nodil.algoquant.core.bars.BarSeries
 import org.json.JSONArray
-import org.json.JSONObject
 
 class DumpLoader {
     companion object {

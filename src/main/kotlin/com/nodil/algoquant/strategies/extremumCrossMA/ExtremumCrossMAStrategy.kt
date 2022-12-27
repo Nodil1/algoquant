@@ -1,13 +1,12 @@
 package com.nodil.algoquant.strategies.extremumCrossMA
 
-import com.nodil.algoquant.core.strategy.*
+import com.nodil.algoquant.core.strategy.Strategy
+import com.nodil.algoquant.core.strategy.StrategyAction
+import com.nodil.algoquant.core.strategy.StrategyComment
+import com.nodil.algoquant.core.strategy.StrategyResult
 import com.nodil.algoquant.core.trader.Target
 import com.nodil.algoquant.core.utils.last
-import com.nodil.algoquant.strategies.RsiDivergenceSettings
-import com.nodil.algoquant.strategies.RsiDivergenceStrategy
 import org.ta4j.core.indicators.ATRIndicator
-import org.ta4j.core.indicators.EMAIndicator
-import org.ta4j.core.indicators.HMAIndicator
 import org.ta4j.core.indicators.RSIIndicator
 import org.ta4j.core.indicators.SMAIndicator
 import org.ta4j.core.indicators.ZLEMAIndicator

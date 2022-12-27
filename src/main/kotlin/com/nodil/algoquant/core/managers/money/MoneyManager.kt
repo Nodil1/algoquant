@@ -1,7 +1,7 @@
 package com.nodil.algoquant.core.managers.money
 
 import com.nodil.algoquant.core.statistic.Statistic
-import com.nodil.algoquant.core.trader.Deal
+
 import com.nodil.algoquant.core.trader.DealSide
 
 abstract class MoneyManager(

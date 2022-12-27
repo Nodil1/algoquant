@@ -1,6 +1,5 @@
 package com.nodil.algoquant.core.bars
 
-import org.ta4j.core.BaseBarSeries
 import org.ta4j.core.num.Num
 import java.time.Duration
 import java.time.ZonedDateTime

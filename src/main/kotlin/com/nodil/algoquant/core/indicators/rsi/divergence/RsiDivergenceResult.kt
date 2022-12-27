@@ -1,7 +1,5 @@
 package com.nodil.algoquant.core.indicators.rsi.divergence
 
-import com.nodil.algoquant.core.bars.Bar
-
 
 class RsiDivergenceResult(
     val type: RsiDivergenceType,

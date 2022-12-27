@@ -1,7 +1,5 @@
 package com.nodil.algoquant.core.trader
 
-import com.nodil.algoquant.core.bars.Bar
-
 class Target(
     val triggerPrice: Double,
     val reduceSize: Int,

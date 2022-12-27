@@ -1,7 +1,5 @@
 package com.nodil.algoquant.core.managers.deal
 
-import com.nodil.algoquant.core.bars.Bar
-import com.nodil.algoquant.core.bars.BarSeries
 import com.nodil.algoquant.core.indicators.ta4j.SourceType
 import com.nodil.algoquant.core.indicators.ta4j.WrappedIndicator
 import com.nodil.algoquant.core.trader.Deal

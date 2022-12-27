@@ -2,7 +2,6 @@ package com.nodil.algoquant.core.indicators.rsi.divergence
 
 import com.nodil.algoquant.core.bars.BarSeries
 import com.nodil.algoquant.core.indicators.HighLow
-import com.nodil.algoquant.core.indicators.ta4j.WrappedIndicator
 import org.ta4j.core.indicators.RSIIndicator
 import org.ta4j.core.indicators.helpers.ClosePriceIndicator
 import kotlin.math.roundToInt
