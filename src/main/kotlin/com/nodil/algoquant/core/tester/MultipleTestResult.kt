@@ -76,14 +76,6 @@ class MultipleTestResult(
             return RecoveryFactor.calc(summaryEarn, testRecord.dropDown)
         }
 
-    val mean: Double
-        get() {
-            return testRecord.getProfits().average()
-        }
-    val median: Double
-        get() {
-            return Median.calc(testRecord.getProfits())
-        }
     fun add(pairName: String, testResult: BackTestResult) {
         pairs[pairName] = testResult
     }
@@ -103,7 +95,7 @@ class MultipleTestResult(
                 pairHandle += "\"${it.key}\","
         }
         return "Earn ${summaryEarn.toInt()}$ Profit $profitPairPercent% MaxProfit ${record.maxProfit.toInt()}$ DropDown ${record.dropDown.toInt()}$ Long ${metric.longProfit.toInt()}$ Short ${metric.shortProfit.toInt()}\$ Ratio ${metric.profitLossRatio} Size ${metric.profitLossSize} Deals ${metric.totalCount}\n" +
-                "Statistic Analysis: Sharpe Ratio: ${sharp.roundToTwoDecimal()} PF: ${profitFactor.roundToTwoDecimal()} RF: ${recoveryFactor.roundToTwoDecimal()} Median: ${median.roundToTwoDecimal()} Mean: ${mean.roundToTwoDecimal()}\n" +
+                "Statistic Analysis: Sharpe Ratio: ${sharp.roundToTwoDecimal()} PF: ${profitFactor.roundToTwoDecimal()} RF: ${recoveryFactor.roundToTwoDecimal()}\n" +
                 "$pairHandle"
     }
 

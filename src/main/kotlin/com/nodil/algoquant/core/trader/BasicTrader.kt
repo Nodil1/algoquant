@@ -63,7 +63,7 @@ class BasicTrader(
             logger?.logInfo("Bot not in trade. Return")
             return
         }
-        val lastTarget = currentDeal!!.targets.last()
+        val lastTarget = currentDeal!!.targets.last().triggerPrice
         dealManager?.checkDeal(barSeries, currentDeal!!)
         when (currentDeal?.side) {
             DealSide.LONG -> {
@@ -75,7 +75,7 @@ class BasicTrader(
                 }
                 currentDeal!!.targets.onEach {
                     if (it.eventBar == null && lastPrice >= it.triggerPrice) {
-                        if (it == lastTarget){
+                        if (it.triggerPrice == lastTarget){
                             logger?.logInfo("Take profit! Last price $lastPrice. Trigger ${it.triggerPrice}")
                             logger?.logDeal("Take profit! Last price $lastPrice. Trigger ${it.triggerPrice}")
                             it.eventBar = barSeries.last()
@@ -97,7 +97,7 @@ class BasicTrader(
                 }
                 currentDeal!!.targets.onEach {
                     if (it.eventBar == null && lastPrice <= it.triggerPrice) {
-                        if (it == lastTarget){
+                        if (it.triggerPrice == lastTarget){
                             logger?.logInfo("Take profit! Last price $lastPrice. Trigger ${it.triggerPrice}")
                             logger?.logDeal("Take profit! Last price $lastPrice. Trigger ${it.triggerPrice}")
                             it.eventBar = barSeries.last()
@@ -112,22 +112,28 @@ class BasicTrader(
             }
             else -> {}
         }
+
+        if (currentDeal?.activeTargets == 0){
+            closeDeal()
+        }
     }
     private fun closeDeal(){
-        val reduce = currentDeal!!.currentAmount
-        if (currentDeal?.side == DealSide.LONG) {
-            logger?.logDeal("Close buy market $reduce")
-            connector?.sellMarket(symbolName, reduce)
-        } else {
-            logger?.logDeal("Close sell market $reduce")
-            connector?.buyMarket(symbolName, reduce)
+        if (state == TraderState.IN_TRADE) {
+            val reduce = currentDeal!!.currentAmount
+            if (currentDeal?.side == DealSide.LONG) {
+                logger?.logDeal("Close buy market $reduce")
+                connector?.sellMarket(symbolName, reduce)
+            } else {
+                logger?.logDeal("Close sell market $reduce")
+                connector?.buyMarket(symbolName, reduce)
+            }
+            currentDeal?.addEarn(lastPrice, 100)
+            currentDeal?.close = barSeries.last()
+            statistic.add(currentDeal!!)
+            logger?.logDeal("Close deal. Earn: ${currentDeal?.earn} Close at ${currentDeal?.close}")
+            logger?.logDeal("Closed deal: \n $currentDeal")
+            state = TraderState.IDLE
         }
-        currentDeal?.addEarn(lastPrice, 100)
-        currentDeal?.close = barSeries.last()
-        statistic.add(currentDeal!!)
-        logger?.logDeal("Close deal. Earn: ${currentDeal?.earn} Close at ${currentDeal?.close}")
-        logger?.logDeal("Closed deal: \n $currentDeal")
-        state = TraderState.IDLE
     }
 
     private fun handleTarget(target: Target) {

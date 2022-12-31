@@ -28,6 +28,17 @@ class Deal(
     val earn: Double
         get() = earns.toDoubleArray().sum() - commission
 
+    val activeTargets: Int
+        get()  {
+            var result = 0
+            targets.onEach {
+                if (it.eventBar == null){
+                    result++
+                }
+            }
+            return result
+        }
+
     fun addEarn(price: Double, reduceSize: Int) {
         val reduce = currentAmount * (reduceSize / 100)
         currentAmount -= reduce
@@ -54,10 +65,11 @@ class Deal(
     override fun toString(): String {
         return "Entry ${entry.close} ${entry.getDateTime()}\n" +
                 "Close ${close?.close} ${close?.getDateTime()}\n" +
+                "CurrentAmount: $currentAmount\n"+
                 "Side: $side Earn: $earn\n" +
                 "Targets: ${targets.joinToString() }()}\n" +
-                "Stop $stopLoss\n\n" +
-                "Comment: ${strategyComment.toString()}"
+                "Stop $stopLoss\n" +
+                "Comment: ${strategyComment.toString()}\n\n"
     }
 
 

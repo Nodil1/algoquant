@@ -24,7 +24,7 @@ class Bar(
     }
     fun getDateTime(): String {
 
-        val sdf =  SimpleDateFormat("dd MMMM yyyy, HH:mm:ss")
+        val sdf =  SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH)
         val netDate = Date(timestampStart)
         return sdf.format(netDate)
     }

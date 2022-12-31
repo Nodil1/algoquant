@@ -8,18 +8,21 @@ import com.nodil.algoquant.core.strategy.StrategyComment
 import com.nodil.algoquant.core.strategy.StrategyResult
 import com.nodil.algoquant.core.trader.Target
 import com.nodil.algoquant.core.utils.last
+import org.ta4j.core.indicators.ATRIndicator
 import org.ta4j.core.indicators.bollinger.BollingerBandFacade
 import org.ta4j.core.indicators.bollinger.BollingerBandsMiddleIndicator
 import org.ta4j.core.indicators.bollinger.BollingerBandsUpperIndicator
 import org.ta4j.core.indicators.helpers.ClosePriceIndicator
+import kotlin.math.abs
 
-class PinbarStrategy(
+open class PinbarStrategy(
     override val settings: PinbarSettings
 ) : Strategy(settings) {
     private val pinBarIndicator = PinBarIndicator(settings.ratio)
     private val closePriceIndicator by lazy { ClosePriceIndicator(barSeries) }
 
     private val bb by lazy { BollingerBandFacade(closePriceIndicator, settings.bbSize, settings.bbDev) }
+    private val ATR by lazy { ATRIndicator(barSeries, 14) }
 
     override fun getResult(): StrategyResult {
         if (barSeries.size < 100) {
@@ -33,8 +36,8 @@ class PinbarStrategy(
                 StrategyResult(
                     StrategyAction.OPEN_LONG,
                     arrayOf(
-                        Target(barSeries.last().close * settings.takeProfitPercent  + barSeries.last().close, 50),
-                        Target(barSeries.last().close * settings.takeProfitPercent * 2 + barSeries.last().close, 50)
+                        Target(barSeries.last().close + (ATR.last().doubleValue() * settings.takeProfitPercent), 50),
+                        Target(barSeries.last().close + (ATR.last().doubleValue() * settings.takeProfitPercent * 2), 50)
                     ),
                     barSeries.last().low,
                     StrategyComment()
@@ -47,8 +50,8 @@ class PinbarStrategy(
                 StrategyResult(
                     StrategyAction.OPEN_SHORT,
                     arrayOf(
-                        Target(barSeries.last().close * settings.takeProfitPercent - barSeries.last().close, 50),
-                        Target(barSeries.last().close * settings.takeProfitPercent * 2 - barSeries.last().close, 50)
+                        Target(barSeries.last().close - (ATR.last().doubleValue() * settings.takeProfitPercent), 50),
+                        Target(barSeries.last().close - (ATR.last().doubleValue() * settings.takeProfitPercent * 2), 50)
                     ),
                     barSeries.last().high,
                     StrategyComment()
