@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Optimize test classes">
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/trader/DealTest.kt" afterDir="false" />
+    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Complete pinbar strategy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/BackTestResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/BackTestResult.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestResult.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestRecord.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestRecord.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/Tester.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/Tester.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/BasicTrader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/BasicTrader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/Deal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/Deal.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/Target.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/PinbarStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/PinbarStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeSettings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672736788286</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Complete pinbar strategy">
+      <created>1672780740553</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672780740553</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +158,7 @@
     <MESSAGE value="Create Sharp Ratio" />
     <MESSAGE value="Fixes" />
     <MESSAGE value="Optimize test classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimize test classes" />
+    <MESSAGE value="Complete pinbar strategy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete pinbar strategy" />
   </component>
 </project>

@@ -12,10 +12,6 @@ repositories {
     mavenCentral()
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.useK2 = true
-}
-
 tasks.getByName<Jar>("jar"){
     enabled = false
 }
