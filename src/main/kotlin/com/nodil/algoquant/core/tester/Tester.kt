@@ -1,13 +1,10 @@
 package com.nodil.algoquant.core.tester
 
-import com.nodil.algoquant.core.bars.BarSeries
 import com.nodil.algoquant.core.data.DumpLoader
 import com.nodil.algoquant.core.managers.deal.TrailStopManager
-import com.nodil.algoquant.core.managers.money.SideBasedManager
 import com.nodil.algoquant.core.strategy.Strategy
 import com.nodil.algoquant.core.strategy.StrategySettings
 import com.nodil.algoquant.core.trader.BasicTrader
-import com.nodil.algoquant.strategies.extremumCrossMA.ExtremumCrossMAStrategy
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -40,11 +37,11 @@ class Tester {
                         BasicTrader(
                             strategyClass.constructors[0].newInstance(setting) as Strategy,
                             nameTest,
-                            //dealManager = TrailStopManager(1),
+                            //dealManager = TrailStopManager(3),
                             //moneyManager = SideBasedManager(100.0)
-                        )
+                        ),
+                        setting
                     )
-
 
                     synchronized(multipleTestResult) {
                         multipleTestResult.add(it.key, tmp)
@@ -59,12 +56,12 @@ class Tester {
             j++
             if (j % 100 == 0) {
                 println(j)
+                System.gc()
             }
             if (multipleTestResult.summaryEarn >= minEarn) {
                 println("$j/${settings.size} Sharp ${multipleTestResult.sharp} ${setting} $multipleTestResult")
                 multipleTestContainer.add(multipleTestResult)
             }
-            System.gc()
 
         }
         println("BEST EARN")
@@ -84,25 +81,7 @@ class Tester {
     }
 
 
-    fun createBackTest(array: Array<ExtremumCrossMAStrategy>, nameTest: String, barSeries: BarSeries): TestResult {
-        val earn = mutableListOf<Double>()
-        val result = TestResult(nameTest)
-        array.onEach {
-            val tmp = runBackTest(
-                barSeries,
-                BasicTrader(
-                    it,
-                    nameTest,
-                    dealManager = TrailStopManager(2)
-                )
-            )
-            tmp.settings = it.settings
-            result.add(tmp)
-        }
-        return result
-    }
-
-    private fun runBackTest(barSeries: com.nodil.algoquant.core.bars.BarSeries, bot: BasicTrader): BackTestResult {
+    private fun runBackTest(barSeries: com.nodil.algoquant.core.bars.BarSeries, bot: BasicTrader, settings: StrategySettings): BackTestResult {
         val record = TestRecord()
         record.prices = barSeries
         val time = measureTimeMillis {
@@ -112,7 +91,7 @@ class Tester {
             }
         }
         bot.stop()
-        return BackTestResult(record, bot.statistic)
+        return BackTestResult(record, bot.statistic, settings)
     }
 
 }

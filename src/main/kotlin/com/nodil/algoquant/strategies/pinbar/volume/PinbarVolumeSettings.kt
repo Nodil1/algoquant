@@ -13,11 +13,11 @@ data class PinbarVolumeSettings(
     companion object {
         fun generate(): Array<PinbarVolumeSettings> {
             val result = mutableListOf<PinbarVolumeSettings>()
-            for (i in 5..10 step 5) {
-                for (_bbSize in 4..16 step 4) {
+            for (i in 5..50 step 15) {
+                for (_bbSize in 5..35 step 10) {
                     for (_bbDev in 30..50 step 5) {
                         for (_takeProfit in 1..10 step 3 )
-                            for (_vf in 1..4)
+                            for (_vf in 1..10 step 2)
                             result.add(
                                 PinbarVolumeSettings(
                                     i,

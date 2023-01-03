@@ -127,8 +127,7 @@ class BasicTrader(
                 logger?.logDeal("Close sell market $reduce")
                 connector?.buyMarket(symbolName, reduce)
             }
-            currentDeal?.addEarn(lastPrice, 100)
-            currentDeal?.close = barSeries.last()
+            currentDeal?.close(barSeries.last())
             statistic.add(currentDeal!!)
             logger?.logDeal("Close deal. Earn: ${currentDeal?.earn} Close at ${currentDeal?.close}")
             logger?.logDeal("Closed deal: \n $currentDeal")
@@ -139,7 +138,7 @@ class BasicTrader(
     private fun handleTarget(target: Target) {
         logger?.logInfo("Handle target")
 
-        val reduce = currentDeal!!.currentAmount * (target.reduceSize / 100)
+        val reduce = currentDeal!!.amount * (target.reduceSize.toDouble() / 100.0)
         if (currentDeal?.side == DealSide.LONG) {
             logger?.logDeal("Reduce buy market $reduce")
             connector?.sellMarket(symbolName, reduce)

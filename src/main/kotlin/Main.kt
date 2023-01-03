@@ -13,9 +13,9 @@ suspend fun main() {
             PinbarVolumeStrategy::class.java,
             "d",
             "3min_150days",
-            Symbols.ALL.slice(0..40).toTypedArray(),
+            arrayOf("ADAUSDT","OMGUSDT","ETCUSDT","LTCUSDT","LINKUSDT","ETHUSDT","XTZUSDT","ZECUSDT","ONTUSDT","BNBUSDT","NEOUSDT","ATOMUSDT","VETUSDT","IOTAUSDT","ZILUSDT","BATUSDT","COMPUSDT","ZRXUSDT"),//Symbols.ALL.slice(0..30).toTypedArray(),
             false,
-            100
+            40
         )
     }
     println(time)

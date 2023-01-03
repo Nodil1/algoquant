@@ -2,7 +2,6 @@ package com.nodil.algoquant.core.tester
 
 import com.nodil.algoquant.core.statistic.Metric
 import com.nodil.algoquant.core.utils.roundToTwoDecimal
-import com.nodil.algoquant.core.utils.statistics.Median
 import com.nodil.algoquant.core.utils.statistics.ProfitFactor
 import com.nodil.algoquant.core.utils.statistics.RecoveryFactor
 import com.nodil.algoquant.core.utils.statistics.SharpeRatio

@@ -4,19 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Fixes">
+    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Optimize test classes">
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/trader/DealTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/data/DumpLoader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/data/DumpLoader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/HarmonicPattern.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/indicators/harmonic/HarmonicPattern.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/managers/money/SideBasedManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/managers/money/SideBasedManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestContainer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestContainer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/BackTestResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/BackTestResult.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/MultipleTestResult.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestRecord.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/TestRecord.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/Tester.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/tester/Tester.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/Extensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/utils/Extensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicPatternSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicPatternSettings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/harmonicPatterns/HarmonicStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/BasicTrader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/BasicTrader.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/Deal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/Deal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/core/trader/Target.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/PinbarStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/PinbarStrategy.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeSettings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeStrategy.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +55,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2EoFA3wVdJrgvrfLUdhHl8xuevC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -129,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664134605555</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Optimize test classes">
+      <created>1672736788286</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672736788286</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +161,7 @@
     <MESSAGE value="Update" />
     <MESSAGE value="Create Sharp Ratio" />
     <MESSAGE value="Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
+    <MESSAGE value="Optimize test classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimize test classes" />
   </component>
 </project>

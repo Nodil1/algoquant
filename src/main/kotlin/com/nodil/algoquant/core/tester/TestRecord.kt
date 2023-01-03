@@ -14,9 +14,7 @@ class TestRecord() {
     val minProfit: Double
         get() = (profits.minOrNull() ?: 0.0).toDouble()
 
-
-
-
+    
     operator fun plus(testRecord: TestRecord) {
         for (i in 0 until testRecord.profits.size) {
             if (profits.getOrNull(i) == null) {

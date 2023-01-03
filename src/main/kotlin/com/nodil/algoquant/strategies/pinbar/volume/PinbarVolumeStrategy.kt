@@ -5,7 +5,6 @@ import com.nodil.algoquant.core.strategy.StrategyResult
 import com.nodil.algoquant.core.utils.last
 import com.nodil.algoquant.strategies.pinbar.PinbarStrategy
 import org.ta4j.core.indicators.SMAIndicator
-import org.ta4j.core.indicators.helpers.ClosePriceIndicator
 import org.ta4j.core.indicators.helpers.VolumeIndicator
 
 class PinbarVolumeStrategy(

@@ -6,17 +6,13 @@ import com.nodil.algoquant.core.strategy.Strategy
 import com.nodil.algoquant.core.strategy.StrategyAction
 import com.nodil.algoquant.core.strategy.StrategyComment
 import com.nodil.algoquant.core.strategy.StrategyResult
-import com.nodil.algoquant.core.trader.Target
 import com.nodil.algoquant.core.utils.last
 import org.ta4j.core.indicators.ATRIndicator
 import org.ta4j.core.indicators.bollinger.BollingerBandFacade
-import org.ta4j.core.indicators.bollinger.BollingerBandsMiddleIndicator
-import org.ta4j.core.indicators.bollinger.BollingerBandsUpperIndicator
 import org.ta4j.core.indicators.helpers.ClosePriceIndicator
-import kotlin.math.abs
 
 open class PinbarStrategy(
-    override val settings: PinbarSettings
+    final override val settings: PinbarSettings
 ) : Strategy(settings) {
     private val pinBarIndicator = PinBarIndicator(settings.ratio)
     private val closePriceIndicator by lazy { ClosePriceIndicator(barSeries) }
@@ -35,9 +31,10 @@ open class PinbarStrategy(
                 }
                 StrategyResult(
                     StrategyAction.OPEN_LONG,
-                    arrayOf(
-                        Target(barSeries.last().close + (ATR.last().doubleValue() * settings.takeProfitPercent), 50),
-                        Target(barSeries.last().close + (ATR.last().doubleValue() * settings.takeProfitPercent * 2), 50)
+                    com.nodil.algoquant.core.trader.Target.createTargetsRange(
+                        barSeries.last().close,
+                        barSeries.last().close + (ATR.last().doubleValue() * settings.takeProfitPercent * 2),
+                        10
                     ),
                     barSeries.last().low,
                     StrategyComment()
@@ -49,9 +46,10 @@ open class PinbarStrategy(
                 }
                 StrategyResult(
                     StrategyAction.OPEN_SHORT,
-                    arrayOf(
-                        Target(barSeries.last().close - (ATR.last().doubleValue() * settings.takeProfitPercent), 50),
-                        Target(barSeries.last().close - (ATR.last().doubleValue() * settings.takeProfitPercent * 2), 50)
+                    com.nodil.algoquant.core.trader.Target.createTargetsRange(
+                        barSeries.last().close,
+                        barSeries.last().close - (ATR.last().doubleValue() * settings.takeProfitPercent * 2),
+                        10
                     ),
                     barSeries.last().high,
                     StrategyComment()
