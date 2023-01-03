@@ -11,3 +11,10 @@ fun Indicator<Num>.last(): Num {
 fun Double.roundToTwoDecimal(): Double{
     return round(this * 100) / 100
 }
+fun Array<Double>.toSequence(): Sequence<Pair<Int, Double>> {
+    val seq = mutableListOf<Pair<Int, Double>>()
+    this.onEachIndexed() { idx, it ->
+        seq.add(Pair(idx, it))
+    }
+    return seq.asSequence()
+}

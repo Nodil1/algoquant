@@ -12,8 +12,10 @@ suspend fun main() {
             PinbarVolumeSettings.generate(),
             PinbarVolumeStrategy::class.java,
             "d",
-            "1min_30days",
-            arrayOf("ETCUSDT","LTCUSDT","ETHUSDT")//Symbols.MAIN.toTypedArray(),
+            "3min_150days",
+            Symbols.ALL.slice(0..40).toTypedArray(),
+            false,
+            100
         )
     }
     println(time)

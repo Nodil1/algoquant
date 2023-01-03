@@ -33,7 +33,7 @@ class HarmonicStrategy(
         }
         when (resultPattern.side) {
             DealSide.LONG -> {
-                if(RSI.last().doubleValue() < 70) {
+                if(RSI.last().doubleValue() > 30) {
                     return noSignal()
                 }
                 return StrategyResult(
@@ -44,7 +44,8 @@ class HarmonicStrategy(
                 )
             }
             DealSide.SHORT -> {
-                if(RSI.last().doubleValue() > 70) {
+
+                if(RSI.last().doubleValue() < 70) {
                     return noSignal()
                 }
                 return StrategyResult(

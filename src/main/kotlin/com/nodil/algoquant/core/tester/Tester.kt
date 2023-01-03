@@ -22,13 +22,14 @@ class Tester {
         period: String,
         symbols: Array<String>,
         printMetric: Boolean = false,
-        disableNonProfitResult: Boolean = true
+        minEarn: Int
 
     ) {
         var j = 0
         val multipleTestContainer = MultipleTestContainer()
         val symbolsDump = DumpLoader.loadMultiple(symbols, period)
-
+        println("TOTAL ${settings.size}")
+        System.gc()
         settings.onEach { setting ->
             val jobs = mutableListOf<Job>()
             val multipleTestResult = MultipleTestResult()
@@ -39,8 +40,8 @@ class Tester {
                         BasicTrader(
                             strategyClass.constructors[0].newInstance(setting) as Strategy,
                             nameTest,
-                            dealManager = TrailStopManager(1),
-                            moneyManager = SideBasedManager(100.0)
+                            //dealManager = TrailStopManager(1),
+                            //moneyManager = SideBasedManager(100.0)
                         )
                     )
 
@@ -56,23 +57,29 @@ class Tester {
                 jobs[i].join()
             }
             j++
-
-            if (multipleTestResult.summaryEarn >= 0) {
+            if (j % 100 == 0) {
+                println(j)
+            }
+            if (multipleTestResult.summaryEarn >= minEarn) {
                 println("$j/${settings.size} Sharp ${multipleTestResult.sharp} ${setting} $multipleTestResult")
                 multipleTestContainer.add(multipleTestResult)
             }
+            System.gc()
+
         }
         println("BEST EARN")
         multipleTestContainer.getBestEarn().testRecord.toCsv("biba")
         println("BEST SHARP")
         multipleTestContainer.getBestSharp().testRecord.toCsv("sharp")
+        println("BEST SLOPE")
+        multipleTestContainer.getBestSlope().testRecord.toCsv("slope")
+
         println("BEST PROFIT FACTOR")
         multipleTestContainer.getBestProfitFactor().testRecord.toCsv("pf")
         multipleTestContainer.getBestProfitFactor().printDeals()
 
         println("BEST RECOVERY FACTOR")
         multipleTestContainer.getBestRecoveryFactor().testRecord.toCsv("recovery")
-        println("BEST MEAN")
 
     }
 

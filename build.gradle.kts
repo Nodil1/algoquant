@@ -28,6 +28,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
     implementation("org.ta4j:ta4j-core:0.15")
     implementation(kotlin("stdlib-jdk8"))
+    implementation("org.nield:kotlin-statistics:1.2.1")
+
 
 
 }

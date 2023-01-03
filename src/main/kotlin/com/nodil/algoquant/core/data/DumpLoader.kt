@@ -3,6 +3,7 @@ package com.nodil.algoquant.core.data
 import com.nodil.algoquant.core.bars.Bar
 import com.nodil.algoquant.core.bars.BarSeries
 import org.json.JSONArray
+import java.io.File
 
 class DumpLoader {
     companion object {
@@ -17,7 +18,7 @@ class DumpLoader {
         fun loadFromJson(dir: String, filename: String): BarSeries {
             try {
                 val fileContent =
-                    javaClass.getResource("/dumps/$dir/$filename.json")?.readText()
+                    File("dumps/$dir/$filename.json").readText()
 
                 val root = JSONArray(fileContent)
                 println("Raw size ${root.length()}")

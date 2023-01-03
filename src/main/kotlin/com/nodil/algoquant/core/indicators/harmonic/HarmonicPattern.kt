@@ -24,14 +24,14 @@ class HarmonicPattern(
 
 
     fun find(barSeries: BarSeries): HarmonicPatternResult {
-        if (barSeries.size < 200) {
+        if (barSeries.size < 130) {
             return noPattern
         }
-        val cuttedSeries = barSeries.getLast(200)
+        val cuttedSeries = barSeries.getLast(130)
         zigZag.calculate(
             cuttedSeries.size,
-            cuttedSeries.getHighPrices().toDoubleArray(),
-            cuttedSeries.getLowPrices().toDoubleArray()
+            cuttedSeries.getClosePrices().toDoubleArray(),
+            cuttedSeries.getClosePrices().toDoubleArray()
         )
         val pivots = zigZag.getZigzagBuffer()
 
@@ -52,7 +52,7 @@ class HarmonicPattern(
     }
 
     private fun findABCD(pivots: DoubleArray): HarmonicPatternResult {
-        val pivotsSize = pivots.size - 1
+        val pivotsSize = pivots.size
 
         val a = pivots[pivotsSize - 4]
         val b = pivots[pivotsSize - 3]

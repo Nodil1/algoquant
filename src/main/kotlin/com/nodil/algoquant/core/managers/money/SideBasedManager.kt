@@ -5,8 +5,8 @@ import com.nodil.algoquant.core.trader.DealSide
 
 class SideBasedManager(startMoney: Double) : MoneyManager(startMoney) {
     override fun getDealSizeInDollars(statistic: Statistic, dealSide: DealSide): Double {
-        if (statistic.size > 5) {
-            val sliced = statistic.slice(statistic.size - 5, statistic.size - 1)
+        if (statistic.size > 10) {
+            val sliced = statistic.slice(statistic.size - 10, statistic.size - 1)
             return startMoney * calcRatio(sliced, dealSide)
         }
         return startMoney
