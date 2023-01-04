@@ -12,10 +12,10 @@ suspend fun main() {
             PinbarVolumeSettings.generate(),
             PinbarVolumeStrategy::class.java,
             "d",
-            "3min_150days",
+            "1min_90days",
             arrayOf("ADAUSDT","OMGUSDT","ETCUSDT","LTCUSDT","LINKUSDT","ETHUSDT","XTZUSDT","ZECUSDT","ONTUSDT","BNBUSDT","NEOUSDT","ATOMUSDT","VETUSDT","IOTAUSDT","ZILUSDT","BATUSDT","COMPUSDT","ZRXUSDT"),//Symbols.ALL.slice(0..30).toTypedArray(),
             false,
-            40
+            50
         )
     }
     println(time)

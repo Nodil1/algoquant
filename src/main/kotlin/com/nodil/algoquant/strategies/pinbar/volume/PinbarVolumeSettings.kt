@@ -17,7 +17,7 @@ data class PinbarVolumeSettings(
                 for (_bbSize in 5..35 step 10) {
                     for (_bbDev in 30..50 step 5) {
                         for (_takeProfit in 1..10 step 3 )
-                            for (_vf in 1..10 step 2)
+                            for (_vf in 1..5 step 1)
                             result.add(
                                 PinbarVolumeSettings(
                                     i,

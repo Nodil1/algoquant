@@ -33,7 +33,7 @@ open class PinbarStrategy(
                     StrategyAction.OPEN_LONG,
                     com.nodil.algoquant.core.trader.Target.createTargetsRange(
                         barSeries.last().close,
-                        barSeries.last().close + (ATR.last().doubleValue() * settings.takeProfitPercent * 2),
+                        barSeries.last().close + (ATR.last().doubleValue() * settings.takeProfitPercent * 1),
                         10
                     ),
                     barSeries.last().low,
@@ -48,7 +48,7 @@ open class PinbarStrategy(
                     StrategyAction.OPEN_SHORT,
                     com.nodil.algoquant.core.trader.Target.createTargetsRange(
                         barSeries.last().close,
-                        barSeries.last().close - (ATR.last().doubleValue() * settings.takeProfitPercent * 2),
+                        barSeries.last().close - (ATR.last().doubleValue() * settings.takeProfitPercent * 1),
                         10
                     ),
                     barSeries.last().high,

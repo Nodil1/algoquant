@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Complete pinbar strategy">
+    <list default="true" id="422e984c-f0bc-483e-aa00-1da0e47651d2" name="Changes" comment="Remove K2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/PinbarStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/PinbarStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/nodil/algoquant/strategies/pinbar/volume/PinbarVolumeSettings.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672780740553</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Remove K2">
+      <created>1672783410714</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672783410714</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +168,7 @@
     <MESSAGE value="Fixes" />
     <MESSAGE value="Optimize test classes" />
     <MESSAGE value="Complete pinbar strategy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete pinbar strategy" />
+    <MESSAGE value="Remove K2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove K2" />
   </component>
 </project>
