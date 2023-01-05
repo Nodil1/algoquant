@@ -119,7 +119,7 @@ class BasicTrader(
     }
     private fun closeDeal(){
         if (state == TraderState.IN_TRADE) {
-            val reduce = currentDeal!!.currentAmount
+            val reduce = roundAmount(currentDeal!!.currentAmount)
             if (currentDeal?.side == DealSide.LONG) {
                 logger?.logDeal("Close buy market $reduce")
                 connector?.sellMarket(symbolName, reduce)
@@ -138,7 +138,7 @@ class BasicTrader(
     private fun handleTarget(target: Target) {
         logger?.logInfo("Handle target")
 
-        val reduce = currentDeal!!.amount * (target.reduceSize.toDouble() / 100.0)
+        val reduce = roundAmount(currentDeal!!.amount * (target.reduceSize.toDouble() / 100.0))
         if (currentDeal?.side == DealSide.LONG) {
             logger?.logDeal("Reduce buy market $reduce")
             connector?.sellMarket(symbolName, reduce)
@@ -172,7 +172,20 @@ class BasicTrader(
             }
         }
     }
+    private fun roundAmount(amount: Double): Double{
+        return if (connector != null) {
+            val precision = connector.getSymbolPrecision(symbolName)
 
+            if (precision != 0) {
+                val afterDot = 10.0.pow(precision)
+                ((amount * afterDot).roundToInt() / afterDot)
+            } else {
+                amount.roundToInt().toDouble()
+            }
+        } else {
+            amount
+        }
+    }
     private fun openDeal(side: DealSide, targets: Array<Target>, stopLoss: Double, comment: StrategyComment) {
         logger?.logDeal("Open deal! Inputs: Side $side, T: ${targets.joinToString()}, SL: $stopLoss \n$comment")
         if (state == TraderState.IDLE) {
@@ -180,15 +193,8 @@ class BasicTrader(
             logger?.logDeal("Allowed money $allowedMoney")
             if (allowedMoney == 0.0) return
             val amount = if (connector != null) {
-                val precision = connector.getSymbolPrecision(symbolName)
                 val rawAmount = allowedMoney / lastPrice
-
-                if (precision != 0) {
-                    val afterDot = 10.0.pow(precision)
-                    ((rawAmount * afterDot).roundToInt() / afterDot)
-                } else {
-                    rawAmount.roundToInt().toDouble()
-                }
+                roundAmount(rawAmount)
             } else {
                 (allowedMoney / lastPrice)
             }
